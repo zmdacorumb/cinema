@@ -1,0 +1,19 @@
+body{
+  font-family: "微軟正黑體";
+}
+
+/* slick slider button 調整 */
+.slick-prev,
+.slick-next
+{
+    width: 50px !important;
+    height: 50px !important;
+    z-index: 1;
+}
+.slick-prev
+{
+    left: 25px !important;
+}
+.slick-next {
+    right: 25px !important;
+}
