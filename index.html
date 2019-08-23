@@ -37,7 +37,7 @@
       </div>
     </div>
   </nav>
-<!-- 輪播slider big -->
+<!-- 輪播big-slider ------------------------------------------------------ -->
   <section>
       <div id="slider_small" class="carousel slide" data-ride="carousel" data-interval="2000">
           <ol class="carousel-indicators">
@@ -66,20 +66,20 @@
           </a>
         </div>
     </section>
-
+<!--輪播small-slider -----------------------------------------------------------  -->
     <section class="container">
         <div class="control text-center">
           
-            <div><img src="img/small_slider/a2.jpg"  alt="下半場"></div>
-            <div><img src="img/small_slider/a3.jpg" alt="朵拉與失落的黃金城"></div>
-            <div><img src="img/small_slider/a4.jpg" alt="絕世名伶"></div>
-            <div><img src="img/small_slider/a5.jpg" alt="在黑暗中說的鬼故事"></div>
-            <div><img src="img/small_slider/a6.jpg" alt="痛苦與榮耀"></div>
-            <div><img src="img/small_slider/a7.jpg" alt="玩命關頭: 特別行動"></div>
-            <div><img src="img/small_slider/a8.jpg" alt="出走巴黎"></div>
-            <div><img src="img/small_slider/a9.jpg" alt="從前,有個好萊塢"></div>
-            <div><img src="img/small_slider/a10.jpg" alt="電流大戰"></div>
-            <div><img src="img/small_slider/a11.jpg" alt="全面攻佔3"></div>
+            <div><a href=""><img src="img/small_slider/a2.jpg" alt="下半場"></a></div>
+            <div><a href=""><img src="img/small_slider/a3.jpg" alt="朵拉與失落的黃金城"></a></div>
+            <div><a href=""><img src="img/small_slider/a4.jpg" alt="絕世名伶"></a></div>
+            <div><a href=""><img src="img/small_slider/a5.jpg" alt="在黑暗中說的鬼故事"></a></div>
+            <div><a href=""><img src="img/small_slider/a6.jpg" alt="痛苦與榮耀"></a></div>
+            <div><a href=""><img src="img/small_slider/a7.jpg" alt="玩命關頭: 特別行動"></a></div>
+            <div><a href=""><img src="img/small_slider/a8.jpg" alt="出走巴黎"></a></div>
+            <div><a href=""><img src="img/small_slider/a9.jpg" alt="從前,有個好萊塢"></a></div>
+            <div><a href=""><img src="img/small_slider/a10.jpg" alt="電流大戰"></a></div>
+            <div><a href=""><img src="img/small_slider/a11.jpg" alt="全面攻佔3"></a></div>
           </div>
 
     </section>
@@ -105,8 +105,12 @@
     {
       breakpoint: 600,
       settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
+        
+        slidesToShow: 1,
+        // arrows: false,
+        centerMode: true,
+        centerPadding: '90px',
+        autoplay:true
       }
     },
     {
@@ -114,7 +118,7 @@
       settings: {
         // slidesToShow: 1,
         // slidesToScroll: 1,
-        // rows:1,
+        
         arrows: false,
         centerMode: true,
         centerPadding: '30px',
