@@ -89,7 +89,6 @@
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
-        // dots: true,
         autoplay: true,
         autoplaySpeed:5000,
         responsive: [
@@ -105,9 +104,7 @@
     {
       breakpoint: 600,
       settings: {
-        
         slidesToShow: 1,
-        // arrows: false,
         centerMode: true,
         centerPadding: '90px',
         autoplay:true
@@ -116,19 +113,26 @@
     {
       breakpoint: 480,
       settings: {
-        // slidesToShow: 1,
-        // slidesToScroll: 1,
-        
         arrows: false,
         centerMode: true,
+        centerPadding: '50px',
+        slidesToShow: 1,
+        autoplay:true
+      }
+    },
+    {
+      breakpoint: 376,
+      settings: {
+        centerMode: true,
         centerPadding: '30px',
+        respondTo:'min',
         slidesToShow: 1,
         autoplay:true
       }
     }
     // You can unslick at a given breakpoint now by adding:
     // settings: "unslick"
-    // instead of a settings object
+    // instead of a settings object 
   ]
       });
       
