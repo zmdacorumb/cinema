@@ -17,3 +17,50 @@ body{
 .slick-next {
     right: 25px !important;
 }
+
+/* 登入頁 login css */
+.bodyimg{
+    background:url('../img/登入背景圖.jpg') no-repeat fixed top left/cover;  ;
+  }
+  .bg_filter{
+    backdrop-filter: blur(5px);   
+  }
+  .bg_filter form {
+    border-radius: 40px !important; 
+  }
+  .bg_filter form input{
+    background-color:transparent;
+    border: 0px; 
+    color: #FFF;
+    font-size: 1.5rem;
+    outline: none !important;
+  }
+  .bg_filter form button{
+    background-color:transparent;
+    border: 0px; 
+    font-size: 1.8rem;
+    border-radius: 30px; 
+  }
+  .tip{
+    display: none;
+    color:  red;
+  }
+
+  .bg_filter form input::-webkit-input-placeholder { /* WebKit browsers */
+        color:white;}
+  .bg_filter input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color:white;}
+  .bg_filter input::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color:white;}
+  .bg_filter input:-ms-input-placeholder { /* Internet Explorer 10+ */
+        color:white;} 
+
+
+
+
+
+        
+  
+
+
+
