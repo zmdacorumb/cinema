@@ -1,7 +1,7 @@
 <?php
  include_once('sql.php');
  if(empty($_SESSION['admin'])) header('location:login.php');
- $mainzone=(empty($_GET['do']))?'small_slider':$_GET['do'];
+ $mainzone=(empty($_GET['do']))?'small_movie':$_GET['do'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -14,20 +14,10 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/myboots.css">
-
   <title>我的後台</title>
 </head>
 
 <body>
-  <!-- 隱藏區 -->
-  <!-- <div id="cover" style="display:none; ">
-		<div id="coverr">
-			<a style="position:absolute; right:3px; top:4px; cursor:pointer; z-index:9999;"
-				onclick="cl('#cover')">X</a>
-			<div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;"></div>
-		</div>
-	</div> -->
-  <!-- nav區 -->
   <div class="container-fluid">
     <div>
       <nav class="navbar mb-5 navbar-expand-lg navbar-dark bg-dark">
@@ -38,7 +28,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav font-weight-bold">
             <li class="nav-item">
-              <a class="nav-link" href="?do=small_slider">上映電影Slider</a>
+              <a class="nav-link" href="?do=small_movie">上映電影Slider</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Features</a>
@@ -57,7 +47,6 @@
       </nav>
     </div>
   </div>
-
   <!-- 前台上映電影區 -->
   <div class="container-fluid">
   <?php include_once($mainzone.".php") ?>
@@ -77,6 +66,7 @@
      console.log('123');
     location.replace('api.php?do=logout');
   }
+  
   </script>
 
 

@@ -20,12 +20,15 @@
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="slick/slick.js" type="text/javascript"></script>
   <style type="text/css">
-
+        .a:focus{
+  background:transparent ;
+}
   </style>
   <title>後台登入頁</title>
 </head>
 
 <body>
+<input type="text" class="form-control col-lg-9 a" id="text" name="acc" placeholder="輸入帳號">
   <div class="container-fluid bodyimg p-0 vh-100 vw-100">
     <div class="row h-100 bg_filter text-white justify-content-around align-items-center ">
       <form method="post" action="api.php?do=check"
@@ -35,13 +38,13 @@
         </div>
         <div class="d-flex border rounded-pill align-items-center py-2 mx-3 ">
           <i class="far fa-user fa-2x mx-3"></i>
-          <input type="text" class="form-control col-lg-9" id="text" name="acc" placeholder="輸入帳號">
+          <input type="text" class="form-control col-lg-9 a" id="text" name="acc" placeholder="輸入帳號">
         </div>
         <div class="d-flex border rounded-pill align-items-center mt-5 py-2 mx-3 ">
           <i class="fas fa-key fa-2x mx-3"></i>
-          <input type="password" class="form-control col-lg-9" id="password" name="pwd" placeholder="輸入密碼">
+          <input type="password" class="form-control col-lg-9 a" id="password" name="pwd" placeholder="輸入密碼">
         </div>
-        <p class="ml-4 my-5 d-lg-inline tip">輸入的帳號或密碼錯誤</p>
+        <p class="ml-4 my-5 d-lg-inline tip" style="display:none">輸入的帳號或密碼錯誤</p>
         <div class="my-4 mx-3  ">
           <button id="submit" type="submit" class=" bg-light  btn-block text-dark py-2 ">登入</button>
         </div>

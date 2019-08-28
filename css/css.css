@@ -1,6 +1,16 @@
 body{
   font-family: "微軟正黑體";
 }
+div.img{
+  
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../img/lion-king.jpeg);
+  -webkit-background-size:cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 /* slick slider button 調整 */
 .slick-prev,
@@ -19,6 +29,7 @@ body{
 }
 
 /* 登入頁 login css */
+
 .bodyimg{
     background:url('../img/登入背景圖.jpg') no-repeat fixed top left/cover;  ;
   }
@@ -55,6 +66,61 @@ body{
   .bg_filter input:-ms-input-placeholder { /* Internet Explorer 10+ */
         color:white;} 
 
+
+/* js plug-in 程式區 */
+/* scrollpage.js 滑動 */
+header {
+  will-change: transform;
+  transition: background 0.3s, -webkit-transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1);
+  transition: transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1), background 0.3s;
+  transition: transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1), background 0.3s, -webkit-transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1);
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+}
+.hide-nav {
+  transform: translateY(-120% !important);
+  -webkit-transform: translateY(-120%) !important;
+}
+
+
+/* nav 底線特效 */
+.menu-left a {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 0px;
+  transition: color .35s ease;
+}
+.menu-left a:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  transition: width 0s ease, background .35s ease;
+}
+.menu-left a:after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: #000;
+  transition: width .35s ease;
+}
+.menu-left a:hover:before {
+  width: 100%;
+  background: #000;
+  transition: width .35s ease;
+}
+.menu-left a:hover:after {
+  width: 100%;
+  background: transparent;
+  transition: all 0s ease;
+}
 
 
 
