@@ -1,5 +1,7 @@
 <?php
-include_once('sql.php');
+session_start();
+$db=new PDO("mysql:host=127.0.0.1;dbname=cinema;charset=utf8","root","",null);
+date_default_timezone_set('Asia/Taipei');
 
 switch ($_GET['do']) {
   // 登入確認
@@ -47,33 +49,65 @@ switch ($_GET['do']) {
       ?>
       <div class="col-lg-3 my-4 ">
         <div class="card hoverMe" style="border: none">
-
           <img class="card-img-top" src="img/small_movie/<?=$row['big_img']?>">
           <div class="card-body text-white">
             <h4 class="card-title font-weight-bolder h5" style="color:#000"><?=$row['ch_name']?></h4>
             <p class="card-text" style="color:#999; font-size:0.5rem;"><?=$row['en_name']?></p>
-          </div>
+          </div> 
         </div>
       </div>
       <?php
         }          
   break;
-  // 請選擇電影 ajax 下拉式選單
+
+
+  // 請選擇電影 ajax 下拉式選單  
   case 'chmovie':
   $sql = "SELECT * FROM small_movie";
   $rows=$db->query($sql)->fetchAll();
   // print_r($rows);
-  echo "<option selected>請選擇電影</option>";
+  echo '<option value="">請選擇電影</option>';
   foreach ($rows as $do => $row) {
-      $i=$i+1;
-    ?>
-    
-  <option value="<?=$i?>"><?=$row['ch_name']?></option>
+    ?>  
+  <option value=<?=$row['id']?>><?=$row['ch_name']?></option>
   <?php
   }
   break;
+  
   case 'booking':
-    print_r ($_POST);
+  $sql = "SELECT * FROM ticket_sell WHERE movie='".$_POST['movie']."' and  date='".$_POST['date']."'";
+  $rows =$db->query($sql)->fetchAll();
+  // 統計 每一時段 總銷售量 $time[時段][銷售數]
+  $time = array(
+    array("10:00~12:00",0), //i=0
+    array("12:00~14:00",0), //i=1
+    array("14:00~16:00",0), //i=2
+    array("16:00~18:00",0), //i=3
+    array("18:00~20:00",0), //i=4
+    array("20:00~22:00",0), //i=5
+    array("22:00~24:00",0)  //i=6 
+  );
+  // print_r($_POST);
+  // echo $_POST['date'];
+    foreach ($rows as $row) {
+      // $row['time']第一個為1 ，要先減1才能等於$time第一個的0, 
+      $time[$row['time']-1][1]+=$row['many'];
+    }
+    if($_POST['date'] == date('Y-m-d')){
+      $begin=(date('H')<10 )?0: floor(date('H')/2)-4;
+    }
+    else{
+      $begin=0;
+    }
+    echo '<option value="">請選擇時段</option>';
+    for($i=$begin;$i<7;$i++){
+      if($time[$i][1]!=50){
+        echo '<option value="'.($i+1).'">'.$time[$i][0].'剩餘座位'.((50-$time[$i][1])).'</option>';
+      }
+    };
+  break;
+  case 'test':
+    print_r($_POST);
   break;
 
 

@@ -1,8 +1,11 @@
 body{
   font-family: "微軟正黑體";
 }
+.bg-navnav{
+  background-image: linear-gradient(to left, #209cff 0%, #68e0cf 100%) !important;
+}
+/* 首頁背景圖 */
 div.img{
-  
   width: 100vw;
   height: 100vh;
   background-image: url(../img/lion-king.jpeg);
@@ -10,6 +13,14 @@ div.img{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+/*  */
+.b{
+ margin: 50px;
+ color: white !important;
+ padding: 100px;
+ background: red;
+
 }
 
 /* slick slider button 調整 */
