@@ -46,10 +46,13 @@ switch ($_GET['do']) {
   $sql = "SELECT * FROM small_movie";
   $rows=$db->query($sql)->fetchAll();
     foreach ($rows as $do => $row) {     
+      
       ?>
       <div class="col-lg-3 my-4 ">
         <div class="card hoverMe" style="border: none">
+        <a href="api.php?do=introduction&id=<?=$row['id']?>">
           <img class="card-img-top" src="img/small_movie/<?=$row['big_img']?>">
+        </a>  
           <div class="card-body text-white">
             <h4 class="card-title font-weight-bolder h5" style="color:#000"><?=$row['ch_name']?></h4>
             <p class="card-text" style="color:#999; font-size:0.5rem;"><?=$row['en_name']?></p>
@@ -106,17 +109,25 @@ switch ($_GET['do']) {
       }
     };
   break;
-  case 'test':
-    print_r($_POST);
+  case 'introduction':
+  header("location:movie_show.php?id=".$_GET['id']."");
   break;
+  case 'dd':
+  // print_r($_GET);
+
+
+
+    $sql = "SELECT * FROM small_movie  WHERE id=".$_GET['id'].""; 
+    $rows = $db->query($sql)->fetch();
+    $re = array();
+  echo "<li>".$rows['introduction']."</li>
+        <li>影片類型 :　".$rows['type']."</li>
+        <li>上映日期 :　".$rows['time']."</li>";
+  break;
+  
 
 
   
 }
-
-
-
-
-
 
 ?>
