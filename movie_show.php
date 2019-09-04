@@ -1,7 +1,9 @@
 <?php
 include_once('sql.php');
+if(!$_GET['id']) header('location:index.html');
 $sql = "SELECT * FROM small_movie WHERE id=".$_GET['id']."";
 $rows = $db ->query($sql)->fetch();
+// print_r($rows);
 ?>
 <!doctype html>
 <html lang="en">
@@ -19,6 +21,8 @@ $rows = $db ->query($sql)->fetch();
   <!-- slick slider 小slider電影欄位 -->
   <link rel="stylesheet" href="slick/slick.css">
   <link rel="stylesheet" href="slick/slick-theme.css">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="css/fontawesome.css">
   <!-- animate效果 -->
   <link rel="stylesheet" href="css/animate.css">
   <script src="js/jquery-3.4.1.min.js"></script>
@@ -30,62 +34,67 @@ $rows = $db ->query($sql)->fetch();
 </head>
 
 <body>
-  <div class="movie_show"
-    style="background: url('img/small_movie/<?=$rows['big_img']?>') no-repeat center/cover;z-index:-100;">
-
-
-    <!-- 訂票系統 -->
-    
-<div class="movie_in">
-    
-    <section class="container-fluid vw-100 row justify-content-center "
-    style="background-image: linear-gradient(to right, #fff305, #ffd900, #ffbe00, #ffa400, #ff8a05) !important;">
-      <div>
-      </div>
-      <div class="container ">
-        <form action="api.php?do=test" method="POST">
-          <div class="form-row align-items-center justify-content-center ">
-            <div class="col-md-3">
-              <select name="chmovie" id="chmovie" class="form-control " onchange="getval()">
-              </select>
-            </div>
-            <div class=" col-md-2 my-3 ">
-              <select name="chdate" id="chdate" class="form-control " onchange="getval()">
-              </select>
-            </div>
-            <div class=" col-md-3 my-3">
-              <select name="chtime" id="chtime" class="form-control ">
-              </select>
-            </div>
-
-            <div class="col-auto ">
-              <button type="submit" class="btn btn-light">確定場次</button>
-            </div>
+  <!-- Modal -->
+  <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body" style="width:150%;">
+          <div class="container-fluid">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/<?=$rows['video']?>" frameborder="1"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
-        </form>
-      </div>
-    </section>
+        </div>
 
-
-
-    <section class="vh-100 vw-100 ">
-      
-
-        <?php include_once("introduction.php") ?>
-      
-    </section>
-   
-    <!-- footer區 -->
-    <div class="container-fluid p-0 fixed-bottom ">
-      <div>
-        <ul class="nav bg-foot justify-content-center">
-          <li class="nav-item ">
-            <a class="nav-link text-dark active" href="#">Copyright &copy; JO</a>
-          </li>
-        </ul>
       </div>
     </div>
   </div>
+  <div class="movie_show overflow-hidden vw-100 vh-100 position-absolute"
+    style="background: url('img/small_movie/<?=$rows['big_img']?>') no-repeat center/cover;z-index:-100;">
+    <!-- 訂票系統 -->
+    <div class="movie_in">
+      <section class="container-fluid vw-100 row justify-content-center"
+        style="background-image: linear-gradient(to right, #fff305, #ffd900, #ffbe00, #ffa400, #ff8a05) !important;">
+        <div>
+        </div>
+        <div class="container ">
+          <form action="api.php?do=test" method="POST">
+            <div class="form-row align-items-center justify-content-center ">
+              <div class="col-md-3">
+                <select name="chmovie" id="chmovie" class="form-control " onchange="getval()">
+                </select>
+              </div>
+              <div class=" col-md-2 my-3 ">
+                <select name="chdate" id="chdate" class="form-control " onchange="getval()">
+                </select>
+              </div>
+              <div class=" col-md-3 my-3">
+                <select name="chtime" id="chtime" class="form-control ">
+                </select>
+              </div>
+
+              <div class="col-auto ">
+                <button type="submit" class="btn btn-light">確定場次</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+      <!-- 電影介紹區 -->
+      <section class="vh-100 vw-100 ">
+        <?php include_once("introduction.php") ?>
+      </section>
+      <!-- footer區 -->
+      <div class="container-fluid p-0 fixed-bottom ">
+        <div>
+          <ul class="nav bg-foot justify-content-center">
+            <li class="nav-item ">
+              <a class="nav-link text-dark active" href="#">Copyright &copy; JO</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 
 
@@ -137,6 +146,44 @@ $rows = $db ->query($sql)->fetch();
 
     }
     getval();
+    //  var ovideo = document.getElementById("movie_video");
+    //  var oline = document.getElementById("movie_line");
+    $('#movie_video').hover(function () {
+      $('#movie_line').css("opacity", "1").fadeTo(1000, 0);
+    }, function () {
+      $('#movie_line').css("opacity", "0")
+    })
+
+    $(function () {
+      var $modal = $('.modal');
+      var HIDE_CLASS = 'is-hide';
+
+      $('#js-startbtn').on('click', function () {
+        $modal.removeClass(HIDE_CLASS);
+      });
+
+      $('.js-modal-close').on('click', function () {
+        $modal.addClass(HIDE_CLASS);
+      });
+    });
+
+    // ---------------------------
+    //   function autoPlayYouTubeModal() {
+    //     var trigger = $("body").find('[data-toggle="modal"]');
+    //     trigger.click(function () {
+    //       var theModal = $(this).data("target"),
+    //         videoSRC = $(this).attr("data-theVideo"),
+    //         videoSRCauto = videoSRC + "?autoplay=1";
+    //       $(theModal + ' iframe').attr('src', videoSRCauto);
+    //       $(theModal + ' button.close').click(function () {
+    //         $(theModal + ' iframe').attr('src', videoSRC);
+    //       });
+    //     });
+    //   }
+    //   $(document).ready(function () {
+    //     autoPlayYouTubeModal();
+    //   });
+    // 
   </script>
 
 

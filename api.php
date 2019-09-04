@@ -1,21 +1,24 @@
 <?php
-session_start();
-$db=new PDO("mysql:host=127.0.0.1;dbname=cinema;charset=utf8","root","",null);
-date_default_timezone_set('Asia/Taipei');
+include_once('sql.php');
 
 switch ($_GET['do']) {
   // 登入確認
   case 'check':
    $sql = "SELECT * FROM admin WHERE acc='".$_POST['acc']."' and pwd='".$_POST['pwd']."'";
    $re = $db->query($sql)->fetchAll();
+   print_r($_GET);
+  //  print_r($_POST);
+  //  print_r($re);
    if($re){
      $_SESSION['admin']=$_POST['acc'];
+    echo $_SESSION['admin'];
      header("location:admin.php");
    }
   else{
      echo '<script>alert("您輸入的帳號或密碼錯誤");location.replace("login.php")</script>';
    }
   break;
+
   // 登出鈕
   case 'logout':
     unset($_SESSION['admin']);
@@ -23,10 +26,42 @@ switch ($_GET['do']) {
   break;
   // small slider 後台新增功能
   case 'smallInsert':
- $sql = "INSERT INTO small_movie(`display`) VALUE (0)";
+   $sql = "INSERT INTO small_movie(`display`) VALUE (0)";
    $db->query($sql);
    header('location:admin.php?do=small_movie');
   break;
+
+  case 're_check':
+   $pdo = "SELECT * FROM member_profile WHERE  acc ='".$_POST['acc']."' and pwd ='".$_POST['pwd']."'";
+  //  echo $pdo;
+   $res =$db->query($pdo)->fetchAll();
+print_r($res);
+  //  print_r($_POST);
+    // print_r($res);
+
+    if($res){
+      $_SESSION['admin']=$_POST['acc'];
+      header("location:sir_booking.php");
+    }
+    else{
+      header("location:sir_login.php?id=0");
+    }
+break;
+case 'sir_register_check':
+  $sql = "SELECT * FROM web1_register WHERE acc='".$_POST['acc']."'";
+  $rows =$db->query($sql)->fetch();
+ 
+   if($rows){
+     echo "檢測帳號重覆";
+   }
+  else{
+    echo "可使用此帳號";
+  }
+  
+ 
+break;
+
+
   // small slider 後台更新功能
   case 'smallUpdate':
     foreach ($_POST as $do => $row) {
@@ -42,6 +77,9 @@ switch ($_GET['do']) {
   header('location:admin.php?do=small_movie') ;
   break;
   // index card 電影介紹
+
+
+
   case 'movie':
   $sql = "SELECT * FROM small_movie";
   $rows=$db->query($sql)->fetchAll();
@@ -62,6 +100,10 @@ switch ($_GET['do']) {
       <?php
         }          
   break;
+
+
+
+
 
 
   // 請選擇電影 ajax 下拉式選單  

@@ -4,6 +4,11 @@ body{
 .bg-navnav{
   background-image: linear-gradient(to left, #209cff 0%, #68e0cf 100%) !important;
 }
+/* 消除input 點選後的框線色  和 input 的底色 */
+.a:focus {
+  background: transparent;
+  outline:none;
+}
 /* 首頁背景圖 */
 /* div.img{
   width: 100vw;
@@ -45,7 +50,8 @@ body{
     background:url('../img/登入背景圖.jpg') no-repeat fixed top left/cover;
   }
   .bg_filter{
-    backdrop-filter: blur(5px);   
+    backdrop-filter: opacity(0.3);   
+    
   }
   .bg_filter form {
     border-radius: 40px !important; 
@@ -64,18 +70,10 @@ body{
     border-radius: 30px; 
   }
   .tip{
-    display: none;
-    color:  red;
+    color:  #ffc108;
   }
+ /* input placeholder 字的顏色 */
 
-  .bg_filter form input::-webkit-input-placeholder { /* WebKit browsers */
-        color:white;}
-  .bg_filter input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-        color:white;}
-  .bg_filter input::-moz-placeholder { /* Mozilla Firefox 19+ */
-        color:white;}
-  .bg_filter input:-ms-input-placeholder { /* Internet Explorer 10+ */
-        color:white;} 
 
 
 /* js plug-in 程式區 */
@@ -119,12 +117,12 @@ header {
   bottom: 0;
   height: 2px;
   width: 0;
-  background: #000;
+  background: white;
   transition: width .35s ease;
 }
 .menu-left a:hover:before {
   width: 100%;
-  background: #000;
+  background: white;
   transition: width .35s ease;
 }
 .menu-left a:hover:after {
@@ -132,23 +130,10 @@ header {
   background: transparent;
   transition: all 0s ease;
 }
-/* movie_show */
 
-  .movie_show{
-    /* position: fixed; */
-    position: absolute;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    width:100%;
-    height:100%;
-    /* margin:0; */
-    /* opacity: 0.4; */
-    z-index: -100;
-    overflow:hidden;
-    content: "";
-  }
+
+
+
   .movie_in{
     /* backdrop-filter: blur(5px);   */
     backdrop-filter: opacity(0.1); 
@@ -158,10 +143,46 @@ header {
   background-image: linear-gradient(to right, #ffc108, #eecc00, #dad700, #c3e100, #a8eb12);
 }
 
+.text-movie{
+  color: #E89805 !important;
+}
+hr{
+  /* background-image: linear-gradient(to right, #ffc108, #9dbc31, #45aa5f, #008f7b, #00717b, #00717b, #00717b, #00717b, #008f7b, #45aa5f, #9dbc31, #ffc108); */
+  background-color: #f6d163;
+  height: 1px;
+  width: 100%; 
+}
+#movie_line{
+  width: 5px;
+  height: 90%;
+  background: #97BB30;
+  margin-left:-10px ;
+  margin-right: 20px;
+  opacity: 0;
+  border-radius: 5px;
+}
+.i:hover{
+  color: #e89805 !important; 
+}
 
+.modal-content {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 0px !important;
+  pointer-events: auto;
+  background-color: red;
+  /* background-clip: padding-box; */
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}
+.movie_li li{
+ margin: 20px 0;
+}
 
-        
-  
 
 
 

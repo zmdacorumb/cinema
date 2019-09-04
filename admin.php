@@ -1,7 +1,7 @@
 <?php
  include_once('sql.php');
  if(empty($_SESSION['admin'])) header('location:login.php');
- $mainzone=(empty($_GET['do']))?'small_movie':$_GET['do'];
+$mainzone=(empty($_GET['do']))?'small_movie':$_GET['do'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -52,65 +52,7 @@
   <?php include_once($mainzone.".php") ?>
   </div>
 
-
-
-
-
-
-
-
-
-  <script>
-  
-   function tip(){
-     console.log('123');
-    location.replace('api.php?do=logout');
-  }
-  
-  </script>
-
-
-
-
-
-
-
-  <!-- <div class="container">
-    <form ></form>
-    <form action="">
-      <div class="form-group">
-        <label class="font-weight-bolder">電影海報</label>
-        <input type="text"  class="form-control" id="exampleInputEmail1" placeholder="text.img">
-        <small id="emailHelp" class="form-text text-muted">輸入圖片連結</small>
-      </div>
-      <div class="form-group">
-        <label class="font-weight-bolder">電影名稱</label>
-        <input type="password" class="form-control" id="" >
-        <small id="emailHelp" class="form-text text-muted">輸入電影名稱</small>
-      </div>
-      <div class="form-group">
-          <label class="font-weight-bolder">電影介紹</label>
-          <textarea name="" id="" cols="10" rows="3" class="form-control"></textarea>
-          <small id="emailHelp" class="form-text text-muted">輸入電影英文名字</small>
-      </div>
-      <div class="form-group">
-          <label>電影分級</label>
-          <input type="text"  class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-          <small id="emailHelp" class="form-text text-muted">輸入分級圖案連結</small>
-      </div>
-      
-      
-      <button type="submit" class="btn btn-primary">修改</button>
-      <button type="reset" class="btn btn-primary">重置</button>
-    </form>
-  </div> -->
-
-
-
-
-
-
-  <!-- Optional JavaScript -->
+  <!-- Optional JavaScript -.....................................................................................->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -118,7 +60,9 @@
   <!-- 其它套件 or js 要放下面 -->
   <script src="js/js.js"></script>
   <script>
-
+   function tip(){
+    location.replace('api.php?do=logout');
+  }
   </script>
 </body>
 

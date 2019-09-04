@@ -1,7 +1,7 @@
 <?php
  include_once('sql.php');
- if(empty($_SESSION['admin'])) header('location:login.php');
- $mainzone=(empty($_GET['do']))?'small_movie':$_GET['do'];
+//  if(empty($_SESSION['admin'])) header('location:login.php');
+//  $mainzone=(empty($_GET['do']))?'small_movie':$_GET['do'];
 ?>
 <div class="container-fluid bg-dark vw-100">
   <form action="api.php?do=smallUpdate" method="post"  class="text-white">
