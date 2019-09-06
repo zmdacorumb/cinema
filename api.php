@@ -30,24 +30,25 @@ switch ($_GET['do']) {
    $db->query($sql);
    header('location:admin.php?do=small_movie');
   break;
-
+  //  會員登入確認
   case 're_check':
-   $pdo = "SELECT * FROM member_profile WHERE  acc ='".$_POST['acc']."' and pwd ='".$_POST['pwd']."'";
-  //  echo $pdo;
-   $res =$db->query($pdo)->fetchAll();
-print_r($res);
-  //  print_r($_POST);
-    // print_r($res);
-
+   $sql = "SELECT * FROM member_profile WHERE  acc ='".$_POST['acc']."' and pwd ='".$_POST['pwd']."'";
+   $res =$db->query($sql)->fetchAll();
     if($res){
-      $_SESSION['admin']=$_POST['acc'];
-      header("location:sir_booking.php");
+      $_SESSION['sir_admin']=$_POST['acc'];
+      if(isset($_POST['chmovie'])){
+      header("location:sir_booking.html?id=".$_POST['chmovie']."");
+      }
+      else{
+        header("location:index.html");
+      }
     }
     else{
       header("location:sir_login.php?id=0");
     }
-break;
-case 'sir_register_check':
+  break;
+  // 會員註冊帳號確認
+  case 'sir_register_check':
   $sql = "SELECT * FROM web1_register WHERE acc='".$_POST['acc']."'";
   $rows =$db->query($sql)->fetch();
  
@@ -57,11 +58,7 @@ case 'sir_register_check':
   else{
     echo "可使用此帳號";
   }
-  
- 
-break;
-
-
+  break;
   // small slider 後台更新功能
   case 'smallUpdate':
     foreach ($_POST as $do => $row) {
@@ -77,35 +74,26 @@ break;
   header('location:admin.php?do=small_movie') ;
   break;
   // index card 電影介紹
-
-
-
   case 'movie':
   $sql = "SELECT * FROM small_movie";
   $rows=$db->query($sql)->fetchAll();
     foreach ($rows as $do => $row) {     
       
       ?>
-      <div class="col-lg-3 my-4 ">
-        <div class="card hoverMe" style="border: none">
-        <a href="api.php?do=introduction&id=<?=$row['id']?>">
-          <img class="card-img-top" src="img/small_movie/<?=$row['big_img']?>">
-        </a>  
-          <div class="card-body text-white">
-            <h4 class="card-title font-weight-bolder h5" style="color:#000"><?=$row['ch_name']?></h4>
-            <p class="card-text" style="color:#999; font-size:0.5rem;"><?=$row['en_name']?></p>
-          </div> 
-        </div>
+    <div class="col-lg-3 my-3">
+      <div class="card hoverMe" style="border: none">
+      <a href="api.php?do=introduction&id=<?=$row['id']?>">
+        <img class="card-img-top" src="img/small_movie/<?=$row['big_img']?>">
+      </a>
+      <div class="card-body text-white bg-dark">
+        <h4 class="card-title font-weight-bolder h5" style="color:#fff;" ><?=$row['ch_name']?></h4>
+        <p class="card-text" style="color:#999; font-size:0.1rem;"><?=$row['en_name']?></p>
       </div>
-      <?php
+     </div>
+    </div>
+  <?php
         }          
   break;
-
-
-
-
-
-
   // 請選擇電影 ajax 下拉式選單  
   case 'chmovie':
   $sql = "SELECT * FROM small_movie";
@@ -113,12 +101,12 @@ break;
   // print_r($rows);
   echo '<option value="">請選擇電影</option>';
   foreach ($rows as $do => $row) {
-    ?>  
+    ?>
   <option value=<?=$row['id']?>><?=$row['ch_name']?></option>
   <?php
   }
   break;
-  
+  // 訂票系統
   case 'booking':
   $sql = "SELECT * FROM ticket_sell WHERE movie='".$_POST['movie']."' and  date='".$_POST['date']."'";
   $rows =$db->query($sql)->fetchAll();
@@ -151,14 +139,11 @@ break;
       }
     };
   break;
+  // 電影介紹頁
   case 'introduction':
   header("location:movie_show.php?id=".$_GET['id']."");
   break;
   case 'dd':
-  // print_r($_GET);
-
-
-
     $sql = "SELECT * FROM small_movie  WHERE id=".$_GET['id'].""; 
     $rows = $db->query($sql)->fetch();
     $re = array();
@@ -166,7 +151,30 @@ break;
         <li>影片類型 :　".$rows['type']."</li>
         <li>上映日期 :　".$rows['time']."</li>";
   break;
-  
+  // 訂票-確認是否有會員
+  case "booking_check":
+    
+    // 如果登入後 從訂票系統進來(有session)  就直接依 chmovie 轉至該 訂位頁
+    // 如果未登入 就從訂票系統進來  就依chmovie id 轉至該 訂位頁
+  if(empty($_SESSION['sir_admin'])) {  
+        if($_POST['acc'] && $_POST['pwd']){
+          $sql = "SELECT * FROM member_profile WHERE acc='".$_POST['acc']."' and pwd='".$_POST['pwd']."'";
+          $rows = $db->query($sql)->fetchAll();
+          if($rows){
+            $_SESSION['sir_admin']=$_POST['acc'];
+            header("location:sir_booking.html?id=".$_POST['chmovie']."");
+          }
+        }
+        else{
+          header("location:sir_login.php");
+        }  
+      }
+    else{
+          
+          header("location:sir_booking.php");
+    }  
+    print_r($_POST);
+  break;
 
 
   

@@ -4,21 +4,31 @@ body{
 .bg-navnav{
   background-image: linear-gradient(to left, #209cff 0%, #68e0cf 100%) !important;
 }
+
+.bg-block{
+  background: #000;
+}
+.bg-gblock{
+  background-image: linear-gradient(to bottom, #000000, #161616, #242424, #333333, #434343);
+}
+.bg-bblock{
+  background-image: linear-gradient(to bottom, #434343, #333333, #242424, #161616, #000000);
+}
 /* 消除input 點選後的框線色  和 input 的底色 */
 .a:focus {
   background: transparent;
   outline:none;
 }
 /* 首頁背景圖 */
-/* div.img{
+.img{
   width: 100vw;
   height: 100vh;
-  background-image: url(../img/lion-king.jpeg);
+  background: url(../img/cap-america.jpg) no-repeat fixed top left/cover;
   -webkit-background-size:cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-} */
+}
 /*  */
 .b{
  margin: 50px;
@@ -50,7 +60,7 @@ body{
     background:url('../img/登入背景圖.jpg') no-repeat fixed top left/cover;
   }
   .bg_filter{
-    backdrop-filter: opacity(0.3);   
+    backdrop-filter: opacity(0.2);   
     
   }
   .bg_filter form {
@@ -98,6 +108,7 @@ header {
   position: relative;
   padding-bottom: 0px;
   transition: color .35s ease;
+ 
 }
 .menu-left a:before {
   content: '';

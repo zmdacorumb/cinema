@@ -30,25 +30,28 @@ include_once('sql.php');
 </head>
 
 <body>  
-  <section class="overflow-hidden">
-    <header class="navbar navbar-expand-lg navbar-light py-3 bg-navnav  ">
-      <a class="navbar-brand  " href="index.html">
-        <img src="img/logo-white.png" alt="">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse flex-row-reverse px-5" id="navbarNavAltMarkup">
-        <div class="navbar-nav d-flex menu-left text-white">
-          <a class="nav-item nav-link animated bounceInDown text-white " href="#">回首頁</a>
-          <a class="nav-item nav-link animated bounceInDown text-white" href="#">電影票價</a>
-          <a class="nav-item nav-link animated bounceInDown text-white" href="sir_registered.php">加入會員</a>
-        </div>
+  <header class="vw-100 navbar navbar-expand-lg navbar-light py-2   fixed-top" >
+    <a class="navbar-brand ml-5 " href="index.html">
+      <img src="img/logo-white.png" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse flex-row-reverse px-5" id="navbarNavAltMarkup">
+      <div class="navbar-nav d-flex menu-left text-white">
+        <a class="nav-item nav-link animated bounceInDown text-white " href="index.html">回首頁</a>
+        <a class="nav-item nav-link animated bounceInDown text-white" href="#">電影票價</a>
+        <a class="nav-item nav-link animated bounceInDown text-white" href="#">加入會員</a>
+        <a class="nav-item nav-link animated bounceInDown text-white" href="sir_login.php"
+        tabindex="-1">登入</a>
       </div>
-    </header>
-
+    </div>
+  </header>
+  
+  <section class="overflow-hidden">
     <div class="container-fluid bodyimg p-0 vh-100 vw-100">
-      <div class="row h-100 bg_filter text-white justify-content-center  ">
+      <div class="row h-100 bg_filter text-white justify-content-center align-items-center ">
         <form method="post" action="api.php?do=re_check"
           class="col-10 col-md-8 col-lg-3 mt-5 w-100 h-75 table-bordered flex-column rounded ">
           <div class="mt-4 mt-md-4">
