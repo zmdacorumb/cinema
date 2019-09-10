@@ -1,5 +1,6 @@
 <?php
 include_once('sql.php');
+// 非會員購票進入確認
 ?>
 <!doctype html>
 <html lang="en">
@@ -18,6 +19,8 @@ include_once('sql.php');
   <link rel="stylesheet" href="slick/slick-theme.css">
   <!--  -->
   <link rel="stylesheet" href="css/fontawesome.css">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
 
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="slick/slick.js" type="text/javascript"></script>
@@ -42,9 +45,9 @@ include_once('sql.php');
       <div class="navbar-nav d-flex menu-left text-white">
         <a class="nav-item nav-link animated bounceInDown text-white " href="index.html">回首頁</a>
         <a class="nav-item nav-link animated bounceInDown text-white" href="#">電影票價</a>
-        <a class="nav-item nav-link animated bounceInDown text-white" href="#">加入會員</a>
-        <a class="nav-item nav-link animated bounceInDown text-white" href="sir_login.php"
-        tabindex="-1">登入</a>
+        <a class="nav-item nav-link animated bounceInDown text-white" href="sir_registered.php">加入會員</a>
+        <!-- <a class="nav-item nav-link animated bounceInDown text-white" href="sir_login.php"
+        tabindex="-1">登入</a> -->
       </div>
     </div>
   </header>
@@ -74,7 +77,7 @@ include_once('sql.php');
           </div>
           <div class="my-3 my-md-5 text-center align-items-center mx-5   ">
             <button id="submit" class=" bg-light  btn-block text-dark py-2 ">
-              <a class="text-dark" href="index.html">非會員登入</a>
+              <a class="text-dark" href="api.php?do=no_sir_booking_check&id=<?=$_GET['id']?>&date=<?=$_GET['date']?>&time=<?=$_GET['time']?>">非會員登入</a>
             </button>
           </div>
         </form>
@@ -83,9 +86,11 @@ include_once('sql.php');
   </section>
   <script>
     $(function () {
-        $('input').val('')
+      $('input').val('');
         $('#submit').on('click', function () {
-            $('.tip').show()
+            $('.tip').show();
+        })   
+      })
 
   </script>
 

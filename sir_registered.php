@@ -42,9 +42,9 @@ include_once('sql.php');
       </button>
       <div class="collapse navbar-collapse flex-row-reverse px-5" id="navbarNavAltMarkup">
         <div class="navbar-nav d-flex menu-left text-white">
-          <a class="nav-item nav-link animated bounceInDown text-white " href="#">回首頁</a>
+          <a class="nav-item nav-link animated bounceInDown text-white " href="index.html">回首頁</a>
           <a class="nav-item nav-link animated bounceInDown text-white" href="#">電影票價</a>
-          <a class="nav-item nav-link animated bounceInDown text-white" href="sir_login.php">登入</a>
+          <!-- <a class="nav-item nav-link animated bounceInDown text-white" href="sir_login.php">登入</a> -->
         </div>
       </div>
     </header>
@@ -59,8 +59,8 @@ include_once('sql.php');
           </div>      
           <div class="d-flex border rounded-pill align-items-center mt-3 mt-md-4 py-2 mx-3">
             <i class="far fa-user fa-2x mx-3"></i>
-            <input type="text" class="form-control text-white col-8 col-lg-9 a"  name="acc" placeholder="註冊帳號" required  onchange='flag=0'>
-            <input type="button" class="btn btn-dark" value="檢測帳號" onclick='check()'>
+            <input type="text" class="form-control  text-white col-8 col-lg-8 a"  name="acc" placeholder="註冊帳號" required  onchange='flag=0'>
+            <input type="button" class="btn btn-dark " value="檢測帳號" onclick='check()'>
           </div>
           <div class="d-flex border rounded-pill align-items-center my-4  my-md-5 py-2 mx-3 ">
             <i class="fas fa-key fa-2x mx-3"></i>
