@@ -4,8 +4,14 @@ include_once('sql.php');
 switch ($_GET['do']) {
   // 登入確認
   case 'check':
-   $sql = "SELECT * FROM admin WHERE acc='".$_POST['acc']."' and pwd='".$_POST['pwd']."'";
-   $re = $db->query($sql)->fetchAll();
+  //  $sql = "SELECT * FROM admin WHERE acc='".$_POST['acc']."' and pwd='".$_POST['pwd']."'";
+  //  $re = $db->query($sql)->fetchAll();
+
+   $data=array($_POST['acc'],$_POST['pwd']);
+   $sql = "SELECT * FROM admin WHERE acc=? and pwd=?";
+   $reload= $db->prepare($sql);
+   $reload->execute($data);
+  $re=$reload->fetchAll();
    if($re){
      $_SESSION['admin']=$_POST['acc'];
      header("location:admin.php");
@@ -32,17 +38,18 @@ switch ($_GET['do']) {
    $sql = "SELECT * FROM member_profile WHERE  acc ='".$_POST['acc']."' and pwd ='".$_POST['pwd']."'";
    $res =$db->query($sql)->fetchAll();
 
-    if($res){
-      $_SESSION['sir_admin']=$_POST['acc'];
-      if(isset($_POST['chmovie'])){
-      header("location:sir_booking.html?id=".$_POST['chmovie']."");
+    if($_GET['id']){
+      if($res){
+        header("location:sir_booking.php?id=".$_GET['id']."&date=".$_GET['date']."&time=".$_GET['time']."");
+        
       }
       else{
-        header("location:index.html");
+        echo "<script>alert('您輸入的帳號或密碼有誤');</script>";
+        header("location:sir_login.php?id=".$_GET['id']."&date=".$_GET['date']."&time=".$_GET['time']."");
       }
     }
     else{
-      header("location:sir_login.php?id=0");
+      header("location:index.html");
     }
   break;
   // 會員註冊帳號確認
@@ -79,17 +86,31 @@ switch ($_GET['do']) {
     foreach ($rows as $do => $row) {     
       
       ?>
-    <div class="col-lg-3 my-3">
-      <div class="card hoverMe" style="border: none">
-      <a href="api.php?do=introduction&id=<?=$row['id']?>">
-        <img class="card-img-top" src="img/small_movie/<?=$row['big_img']?>">
-      </a>
-      <div class="card-body text-white bg-dark">
-        <h4 class="card-title font-weight-bolder h5" style="color:#fff;" ><?=$row['ch_name']?></h4>
-        <p class="card-text" style="color:#999; font-size:0.1rem;"><?=$row['en_name']?></p>
+    <div class="col-lg-3  my-3">
+      <div class="">
+        <div class="card  front1 col-8 col-md-8 col-lg-12 mx-auto p-0" style="border: none">
+          <a href="api.php?do=introduction&id=<?=$row['id']?>">
+            <img class="card-img-top " src="img/small_movie/<?=$row['big_img']?>">
+          </a>
+          <div class="card-body text-white bg-dark">
+            <h4 class="card-title font-weight-bolder h5" style="color:#fff;" ><?=$row['ch_name']?></h4>
+            <p class="card-text" style="color:#999; font-size:0.1rem;"><?=$row['en_name']?></p>
+          </div>
+        </div>
+
+
+        <!-- <div class="" style="border: none">
+          <div class=" text-white">           
+            <h1>1</h1>
+          </div>
+        </div> -->
       </div>
-     </div>
     </div>
+
+
+
+
+
   <?php
         }          
   break;
@@ -177,29 +198,29 @@ switch ($_GET['do']) {
       break;
       // 非會員購票進入確認
       case "no_sir_booking_check":
-      if($_POST['chmovie']) $_GET['id']=$_POST['chmovie'];
-      if($_POST['chdate']) $_GET['date']=$_POST['chdate'];
-      if($_POST['chtime']) $_GET['time']=$_POST['chtime'];
-      
+      // if($_POST['chmovie']) $_GET['id']=$_POST['chmovie'];
+      // if($_POST['chdate']) $_GET['date']=$_POST['chdate'];
+      // if($_POST['chtime']) $_GET['time']=$_POST['chtime'];
+      print_r($_POST);
+      print_r($_GET);
       header("location:sir_booking.php?id=".$_GET['id']."&date=".$_GET['date']."&time=".$_GET['time']."");
-  print_r($_POST);
-  print_r($_SESSION);
-  print_r($_GET);
+  // print_r($_POST);
+  // print_r($_SESSION);
+  // print_r($_GET);
   break;
 // str_pad() 位子號碼傳至 填充字符串的右侧，到 30 个字符的新长度 str_pad($str,30,".");
 // lastInsertId()  PDO::lastInsertId — 返回最后插入行的ID或序列值(PHP 5 >= 5.1.0, PECL pdo >= 0.1.0)
  case 'seat_check':
    if(empty($_POST['seat'])) header("location:sir_booking.php");
    print_r($_POST);
-   echo "<br>";
    print_r($_GET);
-   $seat = serialize($_POST['seat']);
+   $seat = serialize($_POST['seat']);//座位編號 轉至sql
    $num =time();
    $_SESSION["bookok"]=$num;
-   $pdo = "INSERT INTO sell(movie,date,time,seat,num) VALUES ('".$_POST['movie']."',".$_POST['date'].",".$_POST['time'].",'".$seat."','".$num."')";
-    $db->query($pdo);
+   $pdo = "INSERT INTO sell(movie,date,time,seat,num) VALUES ('".$_POST['movie']."','".$_POST['date']."',".$_POST['time'].",'".$seat."','".$num."')";
+    // $db->query($pdo);
   
-    header("location:bookingok.php?id=".$rows['id']);
+    // header("location:sir_bookingok.php?id=".$rows['id']);
  break;
      
   

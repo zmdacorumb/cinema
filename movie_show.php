@@ -53,12 +53,12 @@ $rows = $db ->query($sql)->fetch();
     style="background: url('img/small_movie/<?=$rows['big_img']?>') no-repeat center/cover;z-index:-100;">
     <!-- 訂票系統 -->
     <div class="movie_in">
-      <section class="container-fluid vw-100 row justify-content-center"
+      <section class="container-fluid vw-100 row justify-content-center m-0 pt-3 pt-lg-0"
         style="background-image: linear-gradient(to right, #fff305, #ffd900, #ffbe00, #ffa400, #ff8a05) !important;">
         <div>
         </div>
         <div class="container ">
-          <form action="api.php?do=test" method="POST">
+          <form action="api.php?do=booking_check" method="POST">
             <div class="form-row align-items-center justify-content-center ">
               <div class="col-md-3">
                 <select name="chmovie" id="chmovie" class="form-control " onchange="getval()">
@@ -84,6 +84,8 @@ $rows = $db ->query($sql)->fetch();
       <section class="vh-100 vw-100 ">
         <?php include_once("introduction.php") ?>
       </section>
+
+      
       <!-- footer區 -->
       <div class="container-fluid p-0 fixed-bottom ">
         <div>

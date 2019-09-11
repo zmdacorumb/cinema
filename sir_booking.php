@@ -1,27 +1,36 @@
  <?php
 include_once("sql.php");
 // if(empty($_SESSION)) header("location:sir_login.php?do=re_check");
-print_r($_POST);
-print_r($_GET);
-print_r($_SESSION);
+// print_r($_POST);
+// print_r($_GET);
+// print_r($_SESSION);
 if(!empty($_GET['id'])){
   $sql = "SELECT * FROM small_movie WHERE id=".$_GET['id']."";
+  $rows=$db->query($sql)->fetch();//找所選擇到的電影資料
+ 
+  $sellseats = "SELECT * FROM sell WHERE movie='".$rows['ch_name']."' and date='".$_GET['date']."' and time=".$_GET['time']." ";
+  $sells = $db->query($sellseats)->fetchAll();
+
+  if($_GET['time']==1) $time="10:00~12:00";
+  if($_GET['time']==2) $time="12:00~14:00";
+  if($_GET['time']==3) $time="14:00~16:00";
+  if($_GET['time']==4) $time="16:00~18:00";
+  if($_GET['time']==5) $time="18:00~20:00";
+  if($_GET['time']==6) $time="20:00~22:00";
+  if($_GET['time']==7) $time="22:00~24:00";
+      // 將每筆訂單的已選的座位合併進空陣列
+      $seat = array();
+      foreach($sells as $row)
+      {
+          $s = unserialize($row["seat"]);
+          $seat = array_merge($seat, $s);
+      }
+// $seat=[1,2];
 }
 else {
   header("location:index.html");
 }
-$rows=$db->query($sql)->fetch();
-$pdo = "SELECT * FROM sell WHERE movie='".$rows['ch_name']."'";
-$sells=$db->query($pdo)->fetchAll();
-if($_GET['time']==1) $time="10:00~12:00";
-if($_GET['time']==2) $time="12:00~14:00";
-if($_GET['time']==3) $time="14:00~16:00";
-if($_GET['time']==4) $time="16:00~18:00";
-if($_GET['time']==5) $time="18:00~20:00";
-if($_GET['time']==6) $time="20:00~22:00";
-if($_GET['time']==7) $time="22:00~24:00";
 
-$seat=[1,2];
 
 ?>
  <!doctype html>
@@ -42,7 +51,9 @@ $seat=[1,2];
  </head>
 
  <body>
-   <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+   <!-- navbar -->
+   <!-- fixed-top -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-danger ">
      <a class="navbar-brand " href="index.html"><img src="img/logo-white.png" alt="logo"></a>
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
        <span class="navbar-toggler-icon"></span>
@@ -72,17 +83,19 @@ $seat=[1,2];
        </div>
      </section>
    </nav>
-   <div class="vh-100 vw-100  booking_bg pt-5 ">
+
+   <!-- 選位 -->
+   <section class="vh-100 vw-100  booking_bg  pt-3 ">
      <div class="container h-100">
-       <div class="row h-100  flex-lg-row justify-content-lg-center ">
-         <div class="col-lg-2 bg-danger h-60">
-           <div class="row align-items-center h-100">
-             <img src="img/small_movie/<?=$rows['big_img']?>" alt="" class="position-relative" style="z-index:1;">
+       <div class="row h-100   flex-lg-row justify-content-lg-center align-items-lg-center ">
+         <div class="col-lg-1 h-60">
+           <div class="row justify-content-sm-center  align-items-center  h-100  ">
+             <img src="img/small_movie/<?=$rows['big_img']?>" alt="" class=" position-relative " style="z-index:1;">
            </div>
          </div>
-         <div class="row col-lg-8 bg-info h-60 p-0 m-0">
-           <div class="col-lg-1 h-100 bg-dark"></div>
-           <div class="col-lg-11 h-100 w-100  bg-primary   align-items-center ">
+         <div class="row col  col-lg-8 bg-primary rounded-d h-60 p-0 m-0" style="opacity:0.9">
+           <div class="col-lg-1 h-100 "></div>
+           <div class="col-lg-11 h-100 w-100  align-items-center ">
 
 
 
@@ -94,7 +107,7 @@ $seat=[1,2];
                    <?php
                   for($i=1; $i<51; $i++){
                     if(in_array($i,$seat)){
-                    echo '<input type="button" name="'.$i.'" data-num="'.$i.'" data-text=tt value="╳" class="see btn btn-outline-light d-inline-block  text-center text-danger m-1"></input>';
+                    echo '<input type="button" name="'.$i.'" data-num="'.$i.'" data-text=tt value="✖" class="see btn btn-outline-light d-inline-block  text-center text-dark m-1" disabled"></input>';
                     }
                     else{
                     echo '
@@ -110,7 +123,7 @@ $seat=[1,2];
                 ?>
                  </div>
                  <div class="w-100 h-5 text-center"></div>
-                 <div class="row flex-column w-70 ml-5 pl-3 text-white ">
+                 <div class="row flex-column w-70 ml-5 pl-3 text-white">
                    <input type="hidden" name="movie" value="<?=$rows['ch_name']?>">
                    <input type="hidden" name="date" value="<?=$_GET['date']?>">
                    <input type="hidden" name="time" value="<?=$_GET['time']?>">
@@ -122,18 +135,23 @@ $seat=[1,2];
                   </div>
                </form>
              </div>
-
-
-
-             <div  id="checkout" class="h-100 bg-white d-none">
-              <p>123</p>
-             </div>
-                  
            </div>
          </div>
        </div>
      </div>
-   </div>
+    </section>
+    <!-- footer區 -->
+    <section>
+      <div class="container-fluid p-0 fixed-bottom ">
+        <div>
+          <ul class="nav  justify-content-center">
+            <li class="nav-item ">
+              <a class="nav-link text-light active" href="#">Copyright &copy; JO</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
    <!-- Optional JavaScript -->
    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -152,8 +170,8 @@ $seat=[1,2];
           let text = $(this).val();
           let seat_num  = $(this).attr('data-num');
           // console.log(seat_num);
-          if(text != "╳"){
-            $(this).val('╳');
+          if(text != "✖"){
+            $(this).val('✖');
             $(`.seat#${seat_num}`).attr('checked', true);
             num++;
             $('#many').text(num);

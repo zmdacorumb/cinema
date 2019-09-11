@@ -39,7 +39,7 @@
         <div class="collapse navbar-collapse flex-row-reverse px-5" id="navbarNavAltMarkup">
           <div class="navbar-nav d-flex menu-left text-white">
             <a class="nav-item nav-link animated bounceInDown text-white " href="#">回首頁</a>
-            <a class="nav-item nav-link animated bounceInDown text-white" href="#">電影票價</a>
+            <a class="nav-item nav-link animated bounceInDown text-white" href="ticket_price.html">電影票價</a>
             <a class="nav-item nav-link animated bounceInDown text-white" href="sir_registered.php">加入會員</a>
             <!-- <a class="nav-item nav-link animated bounceInDown text-white" href="sir_login.php"
               tabindex="-1">登入</a> -->
@@ -50,8 +50,8 @@
    <section  class="vw-100 row justify-content-center bg-block    sticky-top" style="margin:0;">
       <div class="container " >
         <form action="api.php?do=booking_check" method="POST">
-          <div class="form-row align-items-center justify-content-center m-0 ">
-            <div class="col-md-3">
+          <div class="form-row col-12   align-items-center justify-content-center m-0 ">
+            <div class="col-md-3 mt-4 mt-md-0">
               <select name="chmovie" id="chmovie" class="form-control " onchange="getval()">          
               </select>
             </div>

@@ -44,7 +44,7 @@ include_once('sql.php');
     <div class="collapse navbar-collapse flex-row-reverse px-5" id="navbarNavAltMarkup">
       <div class="navbar-nav d-flex menu-left text-white">
         <a class="nav-item nav-link animated bounceInDown text-white " href="index.html">回首頁</a>
-        <a class="nav-item nav-link animated bounceInDown text-white" href="#">電影票價</a>
+        <a class="nav-item nav-link animated bounceInDown text-white" href="ticket_price.html">電影票價</a>
         <a class="nav-item nav-link animated bounceInDown text-white" href="sir_registered.php">加入會員</a>
         <!-- <a class="nav-item nav-link animated bounceInDown text-white" href="sir_login.php"
         tabindex="-1">登入</a> -->
@@ -55,8 +55,7 @@ include_once('sql.php');
   <section class="overflow-hidden">
     <div class="container-fluid bodyimg p-0 vh-100 vw-100">
       <div class="row h-100 bg_filter text-white justify-content-center align-items-center ">
-        <form method="post" action="api.php?do=re_check"
-          class="col-10 col-md-8 col-lg-3 mt-5 w-100 h-75 table-bordered flex-column rounded ">
+        <form if="form1" method="post" action="api.php?do=re_check&id=<?=$_GET['id']?>&date=<?=$_GET['date']?>&time=<?=$_GET['time']?>" class="col-10 col-md-8 col-lg-3 mt-5 w-100 h-75 table-bordered flex-column rounded" onclick="return true">
           <div class="mt-4 mt-md-4">
             <p class="text-white h3 mt-lg-3">會員登入</p>
           </div>
@@ -65,18 +64,20 @@ include_once('sql.php');
           </div>
           <div class="d-flex my-3 my-md-4 border rounded-pill align-items-center py-2 mx-3 ">
             <i class="far fa-user fa-2x mx-3"></i>
-            <input type="text" class="form-control text-white col-lg-9 a" id="text" name="acc" placeholder="輸入帳號">
+            <input id="acc" type="text" class="form-control text-white col-lg-9 a" id="text" name="acc" placeholder="輸入帳號">
           </div>
           <div class="d-flex border rounded-pill align-items-center py-2 mx-3 ">
             <i class="fas fa-key fa-2x mx-3"></i>
-            <input type="password" class="form-control text-white col-lg-9 a" id="password" name="pwd" placeholder="輸入密碼">
+            <input id="pwd" type="password" class="form-control text-white col-lg-9 a" id="password" name="pwd" placeholder="輸入密碼">
           </div>
-          <p class="col-lg-6 ml-4  d-lg-inline tip" >輸入的帳號或密碼錯誤</p>
+          <div id="error"  class="opacity-0" >
+            <p  class="col-lg-6 ml-4  d-lg-inline tip " >輸入的帳號或密碼錯誤</p>
+          </div>
           <div class="my-3 my-md-5 text-center align-items-center mx-5  ">
-            <button id="submit" type="submit" class="col-12 bg-light  btn-block text-dark py-2 ">登入</button>
+            <button id="sub"  type="submit" class="col-12 bg-light  btn-block text-dark py-2 ">登入</button>
           </div>
           <div class="my-3 my-md-5 text-center align-items-center mx-5   ">
-            <button id="submit" class=" bg-light  btn-block text-dark py-2 ">
+            <button  class=" bg-light  btn-block text-dark py-2 ">
               <a class="text-dark" href="api.php?do=no_sir_booking_check&id=<?=$_GET['id']?>&date=<?=$_GET['date']?>&time=<?=$_GET['time']?>">非會員登入</a>
             </button>
           </div>
@@ -84,15 +85,7 @@ include_once('sql.php');
       </div>
     </div>
   </section>
-  <script>
-    $(function () {
-      $('input').val('');
-        $('#submit').on('click', function () {
-            $('.tip').show();
-        })   
-      })
-
-  </script>
+  
 
 
 
@@ -103,9 +96,34 @@ include_once('sql.php');
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <!-- 其它套件 or js 要放下面 -->
-  <script>
 
-  </script>
+  <!-- <script>
+    $(function () {
+      $('input').val('');
+        $('#submit').on('click', function () {
+            $('.tip').show();
+        })   
+      })
+  </script> -->
+  <script>
+//  $(document).ready(function(){
+//     $("#sub").click(function(){
+//         if($("#acc").val()==""){
+//             alert("你尚未輸入帳號");
+//             eval("document.form1['acc'].focus()");       
+//         }
+//         else if($("#pwd").val()==""){
+//             alert("你尚未輸入密碼");
+//             eval("document.form1['pwd'].focus()");    
+//         }
+//         else{
+//             document.form1.submit(function(){
+//               return true;
+//             });
+//         }
+//     })
+//  })
+</script>
 </body>
 
 </html>

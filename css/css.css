@@ -29,6 +29,17 @@ body{
   -o-background-size: cover;
   background-size: cover;
 }
+
+.price_img{
+  width: 100vw;
+  height: 100vh;
+  background:url('../img/ticket_bg.jpg') no-repeat fixed top left/cover;
+  backdrop-filter: opacity(0.2); 
+  -webkit-background-size:cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 /*  */
 .booking_bg{
   width: 100vw;
@@ -41,6 +52,7 @@ body{
   backdrop-filter: opacity(0.1); 
   /* opacity: 0.1; */
 }
+
 /*  */
 .b{
  margin: 50px;
@@ -94,6 +106,7 @@ body{
   .tip{
     color:  #ffc108;
   }
+ 
  /* input placeholder 字的顏色 */
 
 
@@ -222,6 +235,12 @@ hr{
   border: 1px solid #ff0000;
   color: red;
 }
+.bg-seat {
+  background-color: rgba(248,249,250,0.7) !important;
+}
+.rounded-d {
+  border-radius: 1rem !important;
+}
 
 @media (max-width: 376px) {
   .see{
@@ -239,5 +258,69 @@ hr{
     /* line-height: 22px; */
     color: red;
   }
+}
+/* ticket price */
+.bbfont{
+  font-size: 3rem;
+  font-weight: bolder;
+}
+.bfont{
+  font-size: 2rem;
+  font-weight: bolder;
+}
+.mfont{
+  font-size: 1.8rem;
+  font-weight: bolder;
+}
+.sfont{
+  font-size: 0.1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* small card flip效果 */
+.middle1{
+  /* position: absolute; */
+  /* top: 50%; */
+  /* left: 50%;  */
+  /* transform: translate(-50%,-50%); */
+}
+.card1{
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+
+}
+.front1,.back1{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  backface-visibility: hidden;
+  /* position: absolute; */
+  transition: transform .6s linear;
+}
+/* .front img{
+  height: 100%;
+} */
+.front1{
+  transform: perspective(600px) rotateY(0deg);
+}
+.back1{
+  background: #f1f1f1;
+  transform:perspective(600px) rotateY(180deg)
+}
+.card1:hover > .front{
+  transform: perspective(600px) rotateY(-180deg);
+}
+.card1:hover > .back{
+  transform: perspective(600px) rotateY(0deg);
 }
 
