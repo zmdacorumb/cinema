@@ -25,7 +25,6 @@ if(!empty($_GET['id'])){
           $s = unserialize($row["seat"]);
           $seat = array_merge($seat, $s);
       }
-// $seat=[1,2];
 }
 else {
   header("location:index.html");
@@ -53,13 +52,13 @@ else {
  <body>
    <!-- navbar -->
    <!-- fixed-top -->
-   <nav class="navbar navbar-expand-lg navbar-dark bg-danger ">
+   <nav class="navbar navbar-expand-lg navbar-dark  " style="background-image: linear-gradient(to right, #fff305, #ffd900, #ffbe00, #ffa400, #ff8a05) !important">
      <a class="navbar-brand " href="index.html"><img src="img/logo-white.png" alt="logo"></a>
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
        <span class="navbar-toggler-icon"></span>
      </button>
      <!-- 訂票系統 -->
-     <section class=" collapse navbar-collapse" id="navbar" style="margin:0;">
+     <section class=" collapse navbar-collapse" id="navbar" style="margin:0 ;">
        <div class="container-fluid ">
          <form class="row" action="api.php?do=no_sir_booking_check" method="POST">
            <div class="form-row col-lg-10 align-items-center justify-content-center m-0 ">
@@ -89,29 +88,29 @@ else {
      <div class="container h-100">
        <div class="row h-100   flex-lg-row justify-content-lg-center align-items-lg-center ">
          <div class="col-lg-1 h-60">
-           <div class="row justify-content-sm-center  align-items-center  h-100  ">
-             <img src="img/small_movie/<?=$rows['big_img']?>" alt="" class=" position-relative " style="z-index:1;">
+           <div class="row justify-content-sm-center  align-items-center  h-100   ">
+             <img src="img/small_movie/<?=$rows['big_img']?>" alt="" class=" position-relative shadow " style="z-index:1;">
            </div>
          </div>
-         <div class="row col  col-lg-8 bg-primary rounded-d h-60 p-0 m-0" style="opacity:0.9">
+         <div class="row col  col-lg-8 bg-white rounded-d h-60 p-0 m-0" style="opacity:1">
            <div class="col-lg-1 h-100 "></div>
            <div class="col-lg-11 h-100 w-100  align-items-center ">
 
 
 
              <div  id="booking" class="h-100">
-               <div class="w-90 mt-3 mx-auto bg-warning text-center">螢幕</div>
+               <div class="w-90 mt-3 mx-auto alert-secondary text-center py-2">螢幕</div>
                <div class="w-100 h-10 text-center"></div>
                <form method="post" action="api.php?do=seat_check">
                  <div class="text-center">
                    <?php
                   for($i=1; $i<51; $i++){
                     if(in_array($i,$seat)){
-                    echo '<input type="button" name="'.$i.'" data-num="'.$i.'" data-text=tt value="✖" class="see btn btn-outline-light d-inline-block  text-center text-dark m-1" disabled"></input>';
+                    echo '<input type="button" name="'.$i.'" data-num="'.$i.'"  value="✖" class="see btn btn-danger d-inline-block  text-center text-white m-1" disabled "></input>';
                     }
                     else{
                     echo '
-                          <input type="button" name="'.$i.'" data-num="'.$i.'" data-text=tt  value="'.$i.'" class="see btn btn-outline-light d-inline-block  text-center text-white m-1"></input>
+                          <input type="button" name="'.$i.'" data-num="'.$i.'" data-text=tt  value="'.$i.'" class="see btn btn-outline-warning d-inline-block  text-center text-dark m-1"></input>
                     ';
                     }
                     if($i % 10 == 0) echo "<br>";
@@ -123,15 +122,15 @@ else {
                 ?>
                  </div>
                  <div class="w-100 h-5 text-center"></div>
-                 <div class="row flex-column w-70 ml-5 pl-3 text-white">
+                 <div class="row flex-column w-70 ml-5 pl-3 text-dark">
                    <input type="hidden" name="movie" value="<?=$rows['ch_name']?>">
                    <input type="hidden" name="date" value="<?=$_GET['date']?>">
                    <input type="hidden" name="time" value="<?=$_GET['time']?>">
-                   <div class="col">您所選擇的電影: <?=$rows['ch_name']?><br></div>
+                    <br>
+                   <div class="col ">您所選擇的電影: <?=$rows['ch_name']?><br></div>
                    <div class="col">您所選擇的時間: <?=$_GET['date']?>. <?=$time?><br></div>
-                   <div class="col">您已勾選了<span id="many">0</span>張票，最多可購買4張票.<br></div>
-                   <!-- <button id="btn1" onclick="gobook()" type="button" class="btn btn-light mt-3 bg-danger">下一步</button> -->
-                   <input type="submit"  class="btn btn-light mt-3 bg-danger" value="下一步">
+                   <div class="col">您已選了<span id="many">0</span>張票，最多可購買4張票.<br></div>
+                   <input type="submit"  class="btn btn-light mt-3 bg-warning" value="下一步">
                   </div>
                </form>
              </div>
@@ -171,7 +170,9 @@ else {
           let seat_num  = $(this).attr('data-num');
           // console.log(seat_num);
           if(text != "✖"){
-            $(this).val('✖');
+            
+            $(this).val('✖').addClass('btn-warning');
+            
             $(`.seat#${seat_num}`).attr('checked', true);
             num++;
             $('#many').text(num);
@@ -179,7 +180,8 @@ else {
               $(this).val(seat_num);
               num--;
               $('#many').text(num);
-            $(`.seat#${seat_num}`).attr('checked', false);
+              $(`.seat#${seat_num}`).attr('checked', false);
+              $(this).removeClass('btn-warning');
             }
           }
           else{
@@ -187,24 +189,11 @@ else {
             $(`.seat#${seat_num}`).attr('checked', false);
             num--;
             $('#many').text(num);
-          }
-         
+            $(this).removeClass('btn-warning');
+          }        
         })
-        // 頁面切換
-        function gobook(){ 
-          
-          
-          $('#booking').load('booking.php',function(){
-               // seat.length=0;  //將座位陣列清空
-               // qt=0;  //將訂票計數先歸零
-                 
-               //切換兩個區塊的狀態(一個隱蔵,一個顯示)
-               $("#booking").toggle();
-               $("#checkout").toggle();
-               })
-             }
-       
-    // booking checkout
+
+        
    </script>
  </body>
 

@@ -88,7 +88,7 @@ body{
     
   }
   .bg_filter form {
-    border-radius: 40px !important; 
+    border-radius: 10px !important; 
   }
   .bg_filter form input{
     background-color:transparent;
@@ -225,21 +225,21 @@ hr{
   background: #000;
 }
 .see{
-  width: 40px;
-  height: 40px;
-  border: 1px solid #000;
-  border-radius: 5px;
+  width: 45px ;
+  height: 45px;
+  /* border: 1px solid #000; */
+  /* border-radius: 5px; */
   /* line-height: 40px; */
 }
-.see:hover {
+/* .see:hover {
   border: 1px solid #ff0000;
   color: red;
-}
+} */
 .bg-seat {
   background-color: rgba(248,249,250,0.7) !important;
 }
 .rounded-d {
-  border-radius: 1rem !important;
+  border-radius: 10px !important;
 }
 
 @media (max-width: 376px) {
@@ -261,11 +261,11 @@ hr{
 }
 /* ticket price */
 .bbfont{
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bolder;
 }
 .bfont{
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: bolder;
 }
 .mfont{
@@ -324,3 +324,11 @@ hr{
   transform: perspective(600px) rotateY(0deg);
 }
 
+.bg-nnav{
+  background-image: linear-gradient(to right, #fff305, #ffd900, #ffbe00, #ffa400, #ff8a05) !important;
+}
+
+/* bookingok頁面 */
+.a1{
+  color: red;
+}

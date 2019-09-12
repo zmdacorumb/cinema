@@ -63,11 +63,11 @@ $sql = "SELECT * FROM small_movie  WHERE id=".$_GET['id']."";
     <div id="movie_line"></div>
     <div class="col h-100 p-0 d-none d-lg-block">
       <div id="mname" class="col-lg-12 h-10 text-warning my-5 ">
-      <p class="h1"><?=$rows['ch_name']?></p>
+      <p class="h1"><b><?=$rows['ch_name']?></b></p>
       <p class="ml-lg-3" ><?=$rows['en_name']?></p>
       </div>
       <div class="col-lg-12 h-40 ">
-        <ul class="list-unstyled text-warning movie_li" id="introduction" >
+        <ul class="list-unstyled text-white movie_li " id="introduction" >
           <li><?=$rows['introduction']?></li>
           <li>影片類型 :　<?=$rows['type']?></li>
           <li>上映日期 :　<?=$rows['time']?></li>

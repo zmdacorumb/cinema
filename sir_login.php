@@ -78,7 +78,7 @@ include_once('sql.php');
           </div>
           <div class="my-3 my-md-5 text-center align-items-center mx-5   ">
             <button  class=" bg-light  btn-block text-dark py-2 ">
-              <a class="text-dark" href="api.php?do=no_sir_booking_check&id=<?=$_GET['id']?>&date=<?=$_GET['date']?>&time=<?=$_GET['time']?>">非會員登入</a>
+              <a class="text-dark" href="api.php?do=no_sir_booking_check&id=<?=$_GET['id']?>&date=<?=$_GET['date']?>&time=<?=$_GET['time']?>">一般購票</a>
             </button>
           </div>
         </form>

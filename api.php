@@ -97,13 +97,6 @@ switch ($_GET['do']) {
             <p class="card-text" style="color:#999; font-size:0.1rem;"><?=$row['en_name']?></p>
           </div>
         </div>
-
-
-        <!-- <div class="" style="border: none">
-          <div class=" text-white">           
-            <h1>1</h1>
-          </div>
-        </div> -->
       </div>
     </div>
 
@@ -212,15 +205,17 @@ switch ($_GET['do']) {
 // lastInsertId()  PDO::lastInsertId — 返回最后插入行的ID或序列值(PHP 5 >= 5.1.0, PECL pdo >= 0.1.0)
  case 'seat_check':
    if(empty($_POST['seat'])) header("location:sir_booking.php");
-   print_r($_POST);
-   print_r($_GET);
+  //  print_r($_POST);
+  //  print_r($_GET);
+   $many =count($_POST['seat']);
    $seat = serialize($_POST['seat']);//座位編號 轉至sql
-   $num =time();
+   $num  =time();
    $_SESSION["bookok"]=$num;
-   $pdo = "INSERT INTO sell(movie,date,time,seat,num) VALUES ('".$_POST['movie']."','".$_POST['date']."',".$_POST['time'].",'".$seat."','".$num."')";
-    // $db->query($pdo);
+   $pdo = "INSERT INTO sell(movie,date,time,many,seat,num) VALUES 
+   ('".$_POST['movie']."','".$_POST['date']."',".$_POST['time'].",".$many.",'".$seat."','".$num."')";
+      $db->query($pdo);
   
-    // header("location:sir_bookingok.php?id=".$rows['id']);
+    header("location:sir_bookingok.php");
  break;
      
   
