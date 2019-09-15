@@ -52,7 +52,7 @@ else {
  <body>
    <!-- navbar -->
    <!-- fixed-top -->
-   <nav class="navbar navbar-expand-lg navbar-dark  " style="background-image: linear-gradient(to right, #fff305, #ffd900, #ffbe00, #ffa400, #ff8a05) !important">
+   <nav class="navbar navbar-expand-lg navbar-dark  " style="background-image: linear-gradient(to right, #ffa400, #ffbe00, #ffd900,#fff305, #ffbe00,#ff8a05) !important">
      <a class="navbar-brand " href="index.html"><img src="img/logo-white.png" alt="logo"></a>
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
        <span class="navbar-toggler-icon"></span>

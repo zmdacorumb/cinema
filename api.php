@@ -35,9 +35,11 @@ switch ($_GET['do']) {
   break;
   //  會員登入確認
   case 're_check':
+  $data=array($_POST['acc'],$_POST['pwd']);
    $sql = "SELECT * FROM member_profile WHERE  acc ='".$_POST['acc']."' and pwd ='".$_POST['pwd']."'";
-   $res =$db->query($sql)->fetchAll();
-
+   $reload =$db->prepare($sql);
+   $reload ->execute($data);
+   $res = $reload->fetchAll();
     if($_GET['id']){
       if($res){
         header("location:sir_booking.php?id=".$_GET['id']."&date=".$_GET['date']."&time=".$_GET['time']."");
@@ -52,7 +54,7 @@ switch ($_GET['do']) {
       header("location:index.html");
     }
   break;
-  // 會員註冊帳號確認
+  // 會員註冊帳號重覆確認
   case 'sir_register_check':
   $sql = "SELECT * FROM web1_register WHERE acc='".$_POST['acc']."'";
   $rows =$db->query($sql)->fetch();
@@ -64,6 +66,20 @@ switch ($_GET['do']) {
     echo "可使用此帳號";
   }
   break;
+  //新會員帳號入資料庫
+  case 'register':
+    print_r($_POST);
+    $sql = "INSERT INTO web1_register(acc,pwd,email,tel) VALUES 
+    ('".$_POST['acc']."','".$_POST['pwd']."','".$_POST['email']."','".$_POST['tel']."') ";
+    $db->query($sql);
+
+    // $data =array($_POST['acc'],$_POST['pwd'],$_POST['email'],$_POST['tel']);
+    // $sql = "INSERT INTO web1_register(acc,pwd,email,tel) VALUES (?) ";
+    // $reload=$db->prepare($sql);
+    // $reload->execute($data);
+
+  break;
+
   // small slider 後台更新功能
   case 'smallUpdate':
     foreach ($_POST as $do => $row) {
@@ -164,24 +180,7 @@ switch ($_GET['do']) {
   break;
   // 訂票-確認是否有會員
   case "booking_check":
-  print_r($_POST);
-  print_r($_SESSION);
-  print_r($_GET);
-    // 如果登入後 從訂票系統進來(有session)  就直接依 chmovie 轉至該 訂位頁
-    // 如果未登入 就從訂票系統進來  就轉至該 會員登入頁
   if(!empty($_SESSION['sir_admin'])) {  
-        // if($_POST['acc'] && $_POST['pwd']){
-        //   $sql = "SELECT * FROM member_profile WHERE acc='".$_POST['acc']."' and pwd='".$_POST['pwd']."'";
-        //   $rows = $db->query($sql)->fetchAll();
-        //   if($rows){
-        //     $_SESSION['sir_admin']=$_POST['acc'];
-        //     print_r($_SESSION['sir_admin']);
-        //     // header("location:sir_booking.html?id=".$_POST['chmovie']."");
-        //   }
-        // }
-        // else{
-        //   header("location:sir_login.php");
-        // }  
         header("location:sir_booking.php?id=".$_POST['chmovie']."&date='".$_POST['chdate']."'&time=".$_POST['chtime']."");
       }
       else{
@@ -191,22 +190,17 @@ switch ($_GET['do']) {
       break;
       // 非會員購票進入確認
       case "no_sir_booking_check":
-      // if($_POST['chmovie']) $_GET['id']=$_POST['chmovie'];
-      // if($_POST['chdate']) $_GET['date']=$_POST['chdate'];
-      // if($_POST['chtime']) $_GET['time']=$_POST['chtime'];
-      print_r($_POST);
-      print_r($_GET);
+      if($_POST['chmovie']) $_GET['id']=$_POST['chmovie'];
+      if($_POST['chdate']) $_GET['date']=$_POST['chdate'];
+      if($_POST['chtime']) $_GET['time']=$_POST['chtime'];
+      // print_r($_POST);
+      // print_r($_GET);
       header("location:sir_booking.php?id=".$_GET['id']."&date=".$_GET['date']."&time=".$_GET['time']."");
-  // print_r($_POST);
-  // print_r($_SESSION);
-  // print_r($_GET);
   break;
 // str_pad() 位子號碼傳至 填充字符串的右侧，到 30 个字符的新长度 str_pad($str,30,".");
 // lastInsertId()  PDO::lastInsertId — 返回最后插入行的ID或序列值(PHP 5 >= 5.1.0, PECL pdo >= 0.1.0)
  case 'seat_check':
    if(empty($_POST['seat'])) header("location:sir_booking.php");
-  //  print_r($_POST);
-  //  print_r($_GET);
    $many =count($_POST['seat']);
    $seat = serialize($_POST['seat']);//座位編號 轉至sql
    $num  =time();

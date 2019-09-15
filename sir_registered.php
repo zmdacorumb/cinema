@@ -133,7 +133,7 @@ include_once('sql.php');
     }
     function checkflag(){
       if(!flag){
-        alert("請先驗證帳號");
+        alert("請先按檢測帳號鈕");
         return false;
       }
       else{

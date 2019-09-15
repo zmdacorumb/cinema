@@ -54,8 +54,11 @@ $rows = $db ->query($sql)->fetch();
     <!-- 訂票系統 -->
     <div class="movie_in">
       <section class="container-fluid vw-100 row justify-content-center m-0 pt-3 pt-lg-0"
-        style="background-image: linear-gradient(to right, #fff305, #ffd900, #ffbe00, #ffa400, #ff8a05) !important;">
-        <div>
+        style="background-image: linear-gradient(to right, #ffa400, #ffbe00, #ffd900,#fff305, #ffbe00,#ff8a05) !important">
+        <div class="row align-items-center pl-lg-3">
+        <a class="navbar-brand " href="index.html">
+          <img src="img/logo-white.png" alt="">
+        </a>
         </div>
         <div class="container ">
           <form action="api.php?do=booking_check" method="POST">
@@ -91,7 +94,7 @@ $rows = $db ->query($sql)->fetch();
         <div>
           <ul class="nav bg-foot justify-content-center">
             <li class="nav-item ">
-              <a class="nav-link text-dark active" href="#">Copyright &copy; JO</a>
+              <span class="nav-link text-dark active" href="#">Copyright &copy; JO</span>
             </li>
           </ul>
         </div>
@@ -148,8 +151,7 @@ $rows = $db ->query($sql)->fetch();
 
     }
     getval();
-    //  var ovideo = document.getElementById("movie_video");
-    //  var oline = document.getElementById("movie_line");
+    // 長條div特效
     $('#movie_video').hover(function () {
       $('#movie_line').css("opacity", "1").fadeTo(1000, 0);
     }, function () {
@@ -169,23 +171,7 @@ $rows = $db ->query($sql)->fetch();
       });
     });
 
-    // ---------------------------
-    //   function autoPlayYouTubeModal() {
-    //     var trigger = $("body").find('[data-toggle="modal"]');
-    //     trigger.click(function () {
-    //       var theModal = $(this).data("target"),
-    //         videoSRC = $(this).attr("data-theVideo"),
-    //         videoSRCauto = videoSRC + "?autoplay=1";
-    //       $(theModal + ' iframe').attr('src', videoSRCauto);
-    //       $(theModal + ' button.close').click(function () {
-    //         $(theModal + ' iframe').attr('src', videoSRC);
-    //       });
-    //     });
-    //   }
-    //   $(document).ready(function () {
-    //     autoPlayYouTubeModal();
-    //   });
-    // 
+
   </script>
 
 

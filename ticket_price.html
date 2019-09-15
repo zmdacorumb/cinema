@@ -12,18 +12,19 @@
   <link rel="stylesheet" href="css/myboots.css">
   <link rel="stylesheet" href="css/css.css">
   <script src="js/jquery-3.4.1.min.js"></script>
-
- 
   <title>CINEMA</title>
+  <style>
+    td{
+      
+    }
+  </style>
 </head>
 
-<body class="">
+<body >
+  <div class="container-fluid price_img vh-100 vw-100">
+    <div class="row bg_filter h-100 p-0">
 
-  <div class="vh-100 vw-100" >
-        <div class="price_img"></div>
-  </div>
-
-
+  
   <header class="vw-100 navbar navbar-expand-lg navbar-light py-2 fixed-top  bg-dark">
     <a class="navbar-brand  " href="index.html">
       <img src="img/logo-white.png" alt="">
@@ -42,55 +43,59 @@
     </div>
   </header>
   <div class="container-fluid bg_filter">
-  <header class="container vh-100 vw-100 fixed-top   ">
-    <div class="row h-100 justify-content-center align-items-center">
-      <table class="col-9 table table-bordered table-active  text-white">
-        <thead>
-          <tr>
-            <th class="table-dark " colspan="2" rowspan="2" ><span class="bbfont">票價 <b class="bfont">Ticket Price</b></span></th>
-            <th class="table-dark" colspan="2">平日</th>
-            <th class="table-dark" colspan="2">例假日</th>
-           
-          </tr>
-          <tr>
+    <header class="container vh-100 vw-100 fixed-top   ">
+      <div class="row h-100 justify-content-center align-items-center">
+        <table class="col-9 table table-bordered table-active  text-white">
+          <thead>
+            <tr>
+              <th class="table-dark " colspan="2" rowspan="2"><span class="bbfont">票價 <b class="bfont">Ticket
+                    Price</b></span></th>
+              <th class="table-dark" colspan="2">平日</th>
+              <th class="table-dark" colspan="2">例假日</th>
+
+            </tr>
+            <tr>
               <th class="table-dark">一般版</th>
               <td class="table-dark">3D版</td>
               <th class="table-dark">一般版</th>
-              <td class="table-dark">3D版</td>            
+              <td class="table-dark">3D版</td>
             </tr>
-        </thead>
-        <tbody>
-         
-          <tr>
-            <th colspan="2"><div class="bfont">早場 <b class="sfont">Early Bird Ticket</b></div>
-              適用每天中午12:00(含)以前場次<br>       
-             <div class="sfont">Be valid for sessions before & included 12:00 everyday. </div>
-            </th>
-            <td>200</td>
-            <td>260</td>
-            <td>200</td>
-            <td>260</td>
-          </tr>
-          <tr>
-            <th colspan="2"><div class="bfont">優待票 <b class="sfont">Concession Ticket</b></div>
-             <div class="sfont">(學生Student、軍警Sokdier/Police、孩童Children)</div>
-            </th>
-            <td>240</td>
-            <td>300</td>
-            <td>245</td>
-            <td>305</td>
-          </tr>
-          <tr>
-            <th colspan="2"><div class="bfont">全票 <b class="sfont">Abuit Ticket</b></div>
-            </th>
-            <td>270</td>
-            <td>330</td>
-            <td>275</td>
-            <td>335</td>
-          </tr>
-          <tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <th colspan="2">
+                <div class="bfont">早場 <b class="sfont">Early Bird Ticket</b></div>
+                適用每天中午12:00(含)以前場次<br>
+                <div class="sfont">Be valid for sessions before & included 12:00 everyday. </div>
+              </th>
+              <td>200</td>
+              <td>260</td>
+              <td>200</td>
+              <td>260</td>
+            </tr>           
+            <tr>
+              <th colspan="2">
+                <div class="bfont">優待票 <b class="sfont">Concession Ticket</b></div>
+                <div class="sfont">(學生Student、軍警Sokdier/Police、孩童Children)</div>
+              </th>
+              <td>240</td>
+              <td>300</td>
+              <td>245</td>
+              <td>305</td>
+            </tr>
+            <tr>
+              <th colspan="2">
+                <div class="bfont">全票 <b class="sfont">Abuit Ticket</b></div>
+              </th>
+              <td>270</td>
+              <td>330</td>
+              <td>275</td>
+              <td>335</td>
+            </tr>
+            <tr>
             <th colspan="2"><div class="bfont">夜貓場 <b class="sfont">Sisspless Cat Ticket</b></div>
-              適用每晚22:30(含)以後之場次 
+              適用每晚22:00以後之場次 
              <div class="sfont">Be valid for sessions after & included 22:00 every right. </div>
              
             </th>
@@ -99,27 +104,22 @@
             <td>220</td>
             <td>280</td>
           </tr>
-          <tr>
-            <th colspan="2"><div class="bfont">長青、身心障礙優惠票 <b class="sfont"></b></div>
-              <div class="sfont">Elder Disabled Preferential Ticket</div>
-            </th>
-            <td>135</td>
-            <td>165</td>
-            <td>138</td>
-            <td>168</td>
-          </tr>
-          <tr>
-
-        </tbody>
-      </table>
-    </div>
-  </header>
-</div>
-
-
-
-
-
+            <tr>
+              <th colspan="2">
+                <div class="bfont">長青、身心障礙優惠票 <b class="sfont"></b></div>
+                <div class="sfont">Elder Disabled Preferential Ticket</div>
+              </th>
+              <td>135</td>
+              <td>165</td>
+              <td>138</td>
+              <td>168</td>
+            </tr>
+            <tr>
+          </tbody>
+        </table>
+      </div>
+    </header>
+  </div>
   <!-- footer區 -->
   <div class="container-fluid p-0 fixed-bottom ">
     <div>
@@ -130,26 +130,8 @@
       </ul>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
+</div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
@@ -159,7 +141,5 @@
   <script src="js/jquery.easing.min.js"></script>
   <script src="js/myjs.js"></script>
 
-
 </body>
-
 </html>

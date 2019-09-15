@@ -1,6 +1,7 @@
 <?php
 include_once('sql.php');
 // 非會員購票進入確認
+if(empty($_GET)) header("location:index.html");
 ?>
 <!doctype html>
 <html lang="en">
