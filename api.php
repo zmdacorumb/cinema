@@ -102,8 +102,8 @@ switch ($_GET['do']) {
     foreach ($rows as $do => $row) {     
       
       ?>
-    <div class="col-lg-3  my-3">
-      <div class="">
+    <div class="col-lg-3  my-3 d-sm-block d-lg-none">
+      <div>
         <div class="card  front1 col-8 col-md-8 col-lg-12 mx-auto p-0" style="border: none">
           <a href="api.php?do=introduction&id=<?=$row['id']?>">
             <img class="card-img-top " src="img/small_movie/<?=$row['big_img']?>">
@@ -116,6 +116,45 @@ switch ($_GET['do']) {
       </div>
     </div>
 
+
+    <div class="image-flip col-10 col-md-6  col-lg-3  my-3 d-none d-lg-block " ontouchstart="this.classList.toggle('hover');">
+      <div class="mainflip  ">
+        <div class="frontside">
+          <div class="card  front1 col-8 col-md-8 col-lg-12 mx-auto p-0" style="border: none">
+            <a href="api.php?do=introduction&id=<?=$row['id']?>">
+              <img class="card-img-top img- fluid " src="img/small_movie/<?=$row['big_img']?>">
+            </a>
+            <div class="card-body text-white bg-dark">
+              <h4 class="card-title font-weight-bolder h5" style="color:#fff;" ><?=$row['ch_name']?></h4>
+              <p class="card-text" style="color:#999; font-size:0.1rem;"><?=$row['en_name']?></p>
+            </div>
+          </div>
+        </div>
+     
+
+        <div class="backside">
+          <div class="card" >
+            <div class="bg-dark" style="z-index:1; opacity:0.5;">
+              <a class="bg-dark" href="api.php?do=introduction&id=<?=$row['id']?>">
+              <img class="card-img-top img- fluid " src="img/small_movie/<?=$row['big_img']?>" width="280" height="475">
+            </a>
+            </div>
+            
+            <div class="card-body fixed-top bg-block text-white h-100" style="z-index:2; opacity:0.9;border:2px solid #ffc108">
+              <h4 class="card-title font-weight-bolder h5" ><?=$row['ch_name']?></h4>
+              <p class="card-text" style="font-size:0.1rem;"><?=$row['introduction']?></p>
+              <p>類型:　<span><?=$row['type']?></span></p>
+              <div class="">
+                <a class="w-50 btn btn-outline-warning  fixed-bottom mb-5 ml-4 text-white"href="api.php?do=introduction&id=<?=$row['id']?>">
+                  看更多
+              </a>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
@@ -162,7 +201,8 @@ switch ($_GET['do']) {
     echo '<option value="">請選擇時段</option>';
     for($i=$begin;$i<7;$i++){
       if($time[$i][1]!=50){
-        echo '<option value="'.($i+1).'">'.$time[$i][0].'剩餘座位'.((50-$time[$i][1])).'</option>';
+        // echo '<option value="'.($i+1).'">'.$time[$i][0].'剩餘座位'.((50-$time[$i][1])).'</option>';
+        echo '<option value="'.($i+1).'">'.$time[$i][0].'</option>';
       }
     };
   break;
@@ -200,6 +240,7 @@ switch ($_GET['do']) {
 // str_pad() 位子號碼傳至 填充字符串的右侧，到 30 个字符的新长度 str_pad($str,30,".");
 // lastInsertId()  PDO::lastInsertId — 返回最后插入行的ID或序列值(PHP 5 >= 5.1.0, PECL pdo >= 0.1.0)
  case 'seat_check':
+      print_r($_POST);
    if(empty($_POST['seat'])) header("location:sir_booking.php");
    $many =count($_POST['seat']);
    $seat = serialize($_POST['seat']);//座位編號 轉至sql
@@ -211,6 +252,32 @@ switch ($_GET['do']) {
   
     header("location:sir_bookingok.php");
  break;
+ case 'unset':
+      unset($_SESSION['bookok']);
+ break;
+
+
+
+
+
+
+
+
+
+
+
+
+ case 'movieee':
+  $sql = "SELECT * FROM small_movie";
+  $rows=$db->query($sql)->fetchAll();
+    foreach ($rows as $do => $row) {     
+      
+      ?>
+
+
+  <?php
+        }          
+  break;
      
   
 }

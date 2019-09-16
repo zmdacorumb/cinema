@@ -58,7 +58,7 @@ $mainzone=(empty($_GET['do']))?'small_movie':$_GET['do'];
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <!-- 其它套件 or js 要放下面 -->
-  <script src="js/js.js"></script>
+  <script src="js/myjs.js"></script>
   <script>
    function tip(){
     location.replace('api.php?do=logout');

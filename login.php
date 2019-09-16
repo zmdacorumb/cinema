@@ -47,7 +47,10 @@ include_once('sql.php');
           <i class="fas fa-key fa-2x mx-3"></i>
           <input type="password" class="form-control col-lg-9 a text-white" id="password" name="pwd" placeholder="輸入密碼">
         </div>
-        <p class="ml-4 my-5 d-lg-inline tip" style="display:none">輸入的帳號或密碼錯誤</p>
+        <div style="opacity:0;">
+          <p class="ml-4 my-5 d-lg-inline tip " >輸入的帳號或密碼錯誤</p>
+
+        </div>
         <div class="my-4 mx-3  ">
           <button id="submit" type="submit" class=" bg-light  btn-block text-dark py-2 ">登入</button>
         </div>

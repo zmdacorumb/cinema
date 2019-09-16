@@ -2,7 +2,7 @@ body{
   font-family: "微軟正黑體";
 }
 .bg-navnav{
-  background-image: linear-gradient(to left, #209cff 0%, #68e0cf 100%) !important;
+  background-image: linear-gradient(to right, #ffa400, #ffbe00, #ffd900,#fff305, #ffbe00,#ff8a05) !important
 }
 
 .bg-block{
@@ -23,7 +23,7 @@ body{
 .img{
   width: 100vw;
   height: 100vh;
-  background: url(../img/cap-america.jpg) no-repeat fixed top left/cover;
+  background: url(../img/cap-america4.jpg) no-repeat fixed top left/cover;
   -webkit-background-size:cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -201,7 +201,7 @@ hr{
   color: #e89805 !important; 
 }
 
-.modal-content {
+.modal-content1 {
   position: relative;
   display: -ms-flexbox;
   display: flex;
@@ -209,11 +209,12 @@ hr{
   flex-direction: column;
   width: 0px !important;
   pointer-events: auto;
-  background-color: red;
+  background-color: #e89805;
   /* background-clip: padding-box; */
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 10px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
   outline: 0;
+
 }
 .movie_li li{
  margin: 20px 0;
@@ -225,8 +226,8 @@ hr{
   background: #000;
 }
 .see{
-  width: 45px ;
-  height: 45px;
+  width: 40px ;
+  height: 40px;
 }
 
 .bg-seat {
@@ -236,21 +237,45 @@ hr{
   border-radius: 10px !important;
 }
 
-@media (max-width: 376px) {
+@media (max-width: 769px) {
   .see{
-    width: 22px;
-    height: 22px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    /* line-height: 22px; */
+    width: 30px;
+    height: 30px;
+    border: 1px solid #e89805;
+    /* line-height: 30px; */
+    font-size: 2px;
+    padding-left: 5px;
+
+    
+   
   }
   .see:hover {
-    width: 22px;
-    height: 22px;
+    width: 30px;
+    height: 30px;
     border: 1px solid red;
     border-radius: 5px;
-    /* line-height: 22px; */
+    /* line-height: 30px; */
     color: red;
+    text-align:center;
+  }
+}
+
+@media (max-width: 575px) {
+  .see{
+    width: 23px;
+    height: 23px;
+    border: 1px solid #e89805;
+    line-height: 12px;
+    font-size: 2px;  
+  }
+  .see:hover {
+    width: 23px;
+    height: 23px;
+    border: 1px solid red;
+    border-radius: 5px;
+    line-height: 12px;
+    color: red;
+    text-align:center;
   }
 }
 /* ticket price */
@@ -324,5 +349,16 @@ hr{
 
 /* bookingok頁面 */
 .z1{
-  color: red;
+  color: rgb(255, 193, 7)
+}
+.z2{
+  color:rgb(108, 117, 125);
+}
+.shadowok {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+@media (max-width: 575px ){
+  .h-sm-70 {
+    height: 70% !important;
+  }
 }

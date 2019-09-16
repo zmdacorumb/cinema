@@ -1,8 +1,8 @@
  <?php
 include_once("sql.php");
 // if(empty($_SESSION)) header("location:sir_login.php?do=re_check");
-// print_r($_POST);
-// print_r($_GET);
+print_r($_POST);
+print_r($_GET);
 // print_r($_SESSION);
 if(!empty($_GET['id'])){
   $sql = "SELECT * FROM small_movie WHERE id=".$_GET['id']."";
@@ -49,10 +49,11 @@ else {
    <title>訂票頁面</title>
  </head>
 
- <body>
+ <body class="bg-block">
    <!-- navbar -->
    <!-- fixed-top -->
-   <nav class="navbar navbar-expand-lg navbar-dark  " style="background-image: linear-gradient(to right, #ffa400, #ffbe00, #ffd900,#fff305, #ffbe00,#ff8a05) !important">
+   <nav class="navbar navbar-expand-lg navbar-dark fixed-top  "
+     style="background-image: linear-gradient(to right, #ffa400, #ffbe00, #ffd900,#fff305, #ffbe00,#ff8a05) !important">
      <a class="navbar-brand " href="index.html"><img src="img/logo-white.png" alt="logo"></a>
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
        <span class="navbar-toggler-icon"></span>
@@ -86,71 +87,72 @@ else {
    <!-- 選位 -->
    <section class="vh-100 vw-100  booking_bg  pt-3 ">
      <div class="container h-100">
-       <div class="row h-100   flex-lg-row justify-content-lg-center align-items-lg-center ">
-         <div class="col-lg-1 h-60">
-           <div class="row justify-content-sm-center  align-items-center  h-100   ">
-             <img src="img/small_movie/<?=$rows['big_img']?>" alt="" class=" position-relative shadow " style="z-index:1;">
+       <div class="row h-100   flex-lg-row justify-content-lg-center align-items-lg-center m-0 ">
+         <div class="row col-lg-3 w-100 h-60 justify-content-center m-0 p-0">
+           <div
+             class="row col ml-auto justify-content-center justify-content-lg-end  align-items-center w-100  h-100 mt-3 mt-md-0 mx-0 p-0">
+             <img class=" bg-white" src="img/small_movie/<?=$rows['big_img']?>" alt="">
            </div>
          </div>
-         <div class="row col  col-lg-8 bg-white rounded-d h-60 p-0 m-0" style="opacity:1">
-           <div class="col-lg-1 h-100 "></div>
-           <div class="col-lg-11 h-100 w-100  align-items-center ">
-
-
-
-             <div  id="booking" class="h-100">
-               <div class="w-90 mt-3 mx-auto alert-secondary text-center py-2">螢幕</div>
-               <div class="w-100 h-10 text-center"></div>
-               <form method="post" action="api.php?do=seat_check">
-                 <div class="text-center">
-                   <?php
-                  for($i=1; $i<51; $i++){
-                    if(in_array($i,$seat)){
-                    echo '<input type="button" name="'.$i.'" data-num="'.$i.'"  value="✖" class="see btn btn-danger d-inline-block  text-center text-white m-1" disabled "></input>';
+         <div class="row col  col-lg-8 bg-white rounded-d h-60 p-0 m-0 ">
+           <div class="row col h-100 justify-content-center mx-auto   " id="booking">
+             <div class="row col-10 col-lg-8  h-10 mt-3 alert-secondary justify-content-center align-items-center ">
+               <span class="h-50 ">螢幕</span>
+             </div>
+             <form class="row col-12 h-70  justify-content-center   " method="post" action="api.php?do=seat_check">
+               <div class="row col mx-0  ">
+                 <?php
+                  for($i=1; $i<61; $i++){
+                    if( in_array($i,$seat)){
+                    echo '<div class=" col-1 p-0 pl-lg-1 my-1">
+                    <input type="button" name="'.$i.'" data-num="'.$i.'"  value="✖" class=" see btn btn-danger    text-white" disabled  "></input>
+                          </div>
+                          ';
                     }
                     else{
-                    echo '
-                          <input type="button" name="'.$i.'" data-num="'.$i.'" data-text=tt  value="'.$i.'" class="see btn btn-outline-warning d-inline-block  text-center text-dark m-1"></input>
-                    ';
+                    echo '<div class="col-1  p-0 pl-lg-1 my-1 ">
+                          <input type="button" name="'.$i.'" data-num="'.$i.'" data-text=tt  value="'.$i.'" class="see btn btn-outline-warning text-dark"></input>
+                          </div>
+                          ';
                     }
-                    if($i % 10 == 0) echo "<br>";
+                    // if($i % 10 == 0) echo "<br>";
                   }
-                  for($i=1; $i<51; $i++){                 
+                  for($i=1; $i<61; $i++){                 
                     echo '
                     <input type="checkbox" name="seat[]" class="seat" value="'.$i.'" id="'.$i.'" style="display:none;" ></input>';
                   }                 
                 ?>
+               </div>
+               <div class="w-100 h-0 text-center"></div>
+               <div class="row flex-column w-90 text-dark ">
+                 <input type="hidden" name="movie" value="<?=$rows['ch_name']?>">
+                 <input type="hidden" name="date" value="<?=$_GET['date']?>">
+                 <input type="hidden" name="time" value="<?=$_GET['time']?>">
+                 <br>
+                 <div class="col ">您所選擇的電影: <?=$rows['ch_name']?><br></div>
+                 <div class="col">您所選擇的時間: <?=$_GET['date']?> <?=$time?><br></div>
+                 <div class="col">您已選了<span id="many">0</span>張票，最多可購買4張票.<br></div>
+                 <div class="col">
+                   <input type="submit" class="btn btn-light mt-1 mt-md-3 bg-warning" value="下一步">
                  </div>
-                 <div class="w-100 h-5 text-center"></div>
-                 <div class="row flex-column w-70 ml-5 pl-3 text-dark">
-                   <input type="hidden" name="movie" value="<?=$rows['ch_name']?>">
-                   <input type="hidden" name="date" value="<?=$_GET['date']?>">
-                   <input type="hidden" name="time" value="<?=$_GET['time']?>">
-                    <br>
-                   <div class="col ">您所選擇的電影: <?=$rows['ch_name']?><br></div>
-                   <div class="col">您所選擇的時間: <?=$_GET['date']?>. <?=$time?><br></div>
-                   <div class="col">您已選了<span id="many">0</span>張票，最多可購買4張票.<br></div>
-                   <input type="submit"  class="btn btn-light mt-3 bg-warning" value="下一步">
-                  </div>
-               </form>
-             </div>
-           </div>
+               </div>
+             </form>
          </div>
        </div>
+     </div>    
+   </section>
+   <!-- footer區 -->
+   <section>
+     <div class="container-fluid p-0 fixed-bottom ">
+       <div>
+         <ul class="nav  justify-content-center">
+           <li class="nav-item ">
+             <a class="nav-link text-light active" href="#">Copyright &copy; JO</a>
+           </li>
+         </ul>
+       </div>
      </div>
-    </section>
-    <!-- footer區 -->
-    <section>
-      <div class="container-fluid p-0 fixed-bottom ">
-        <div>
-          <ul class="nav  justify-content-center">
-            <li class="nav-item ">
-              <a class="nav-link text-light active" href="#">Copyright &copy; JO</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
+   </section>
 
    <!-- Optional JavaScript -->
    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -160,40 +162,37 @@ else {
    <script src="js/myjs.js"></script>
    <!-- 其它套件 or js 要放下面 -->
    <script>
-     let movie,date,time,seat;
+     let movie, date, time, seat;
      var num = 0;
      // 訂票系統
      getval();
-    //  點選座位後的動作
-     $("input[data-text=tt]").click(function(){ 
-          let text = $(this).val();
-          let seat_num  = $(this).attr('data-num');
-          // console.log(seat_num);
-          if(text != "✖"){
-            
-            $(this).val('✖').addClass('btn-warning');
-            
-            $(`.seat#${seat_num}`).attr('checked', true);
-            num++;
-            $('#many').text(num);
-            if(num>4){
-              $(this).val(seat_num);
-              num--;
-              $('#many').text(num);
-              $(`.seat#${seat_num}`).attr('checked', false);
-              $(this).removeClass('btn-warning');
-            }
-          }
-          else{
-            $(this).val(seat_num);
-            $(`.seat#${seat_num}`).attr('checked', false);
-            num--;
-            $('#many').text(num);
-            $(this).removeClass('btn-warning');
-          }        
-        })
+     //  點選座位後的動作
+     $("input[data-text=tt]").click(function () {
+       let text = $(this).val();
+       let seat_num = $(this).attr('data-num');
+       // console.log(seat_num);
+       if (text != "✖") {
 
-        
+         $(this).val('✖').addClass('btn-warning');
+
+         $(`.seat#${seat_num}`).attr('checked', true);
+         num++;
+         $('#many').text(num);
+         if (num > 4) {
+           $(this).val(seat_num);
+           num--;
+           $('#many').text(num);
+           $(`.seat#${seat_num}`).attr('checked', false);
+           $(this).removeClass('btn-warning');
+         }
+       } else {
+         $(this).val(seat_num);
+         $(`.seat#${seat_num}`).attr('checked', false);
+         num--;
+         $('#many').text(num);
+         $(this).removeClass('btn-warning');
+       }
+     })
    </script>
  </body>
 

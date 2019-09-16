@@ -43,8 +43,7 @@ include_once('sql.php');
       <div class="collapse navbar-collapse flex-row-reverse px-5" id="navbarNavAltMarkup">
         <div class="navbar-nav d-flex menu-left text-white">
           <a class="nav-item nav-link animated bounceInDown text-white " href="index.html">回首頁</a>
-          <a class="nav-item nav-link animated bounceInDown text-white" href="#">電影票價</a>
-          <!-- <a class="nav-item nav-link animated bounceInDown text-white" href="sir_login.php">登入</a> -->
+          <a class="nav-item nav-link animated bounceInDown text-white" href="ticket_price.html">電影票價</a>
         </div>
       </div>
     </header>
