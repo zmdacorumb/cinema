@@ -3,20 +3,25 @@
 //  if(empty($_SESSION['admin'])) header('location:login.php');
 //  $mainzone=(empty($_GET['do']))?'small_movie':$_GET['do'];
 ?>
-<div class="container-fluid bg-dark vw-100">
-  <form action="api.php?do=smallUpdate" method="post"  class="text-white">
-    <table id="dt" class=" table-dark p-0 m-0" style="width:100%">
-      <thead class="">
-        <tr>
-          <th>ID</th>
-          <th>大圖</th>
-          <th>片名(中文)</th>
-          <th>片名(英文)</th>
-          <th>連結位址</th>
-          <th>分級圖連結</th>
-          <th>片長</th>
-          <th>是否顯示</th>
-          <th>刪除</th>
+<div class=" w-100">
+  <form action="api.php?do=smallUpdate" method="post"  class="text-white p-5">
+    <table id="dt" class="  p-0 m-0 table-striped" style="width:100%;border:2px solid #004080;">
+      <thead class="thead-dark">
+        <tr class="bg-dbule">
+          <th class="text-center" width="1%">ID</th>
+          <th class="text-center" width="5%">大圖</th>
+          <th class="text-center" width="5%">片名(中文)</th>
+          <th class="text-center" width="5%">片名(英文)</th>
+          <th class="text-center" width="3%">連結位址</th>
+          <th class="text-center" width="3%">分級圖</th>
+          <th class="text-center" width="20%">電影介紹</th>
+          <th class="text-center" width="3%">劇情</th>
+          <th class="text-center" width="3%">語言</th>
+          <th class="text-center" width="3%">預告片</th>
+          <th class="text-center" width="3%">上映日期</th>
+          <th class="text-center" width="5%">片長</th>
+          <th class="text-center" width="5%">顯示</th>
+          <th class="text-center" width="5%">刪除</th>
         </tr>
       </thead>
       <tbody>
@@ -27,15 +32,47 @@
         ?>
         <tr>
           
-          <th scope="row"><p name="<?=$row['id']?>"><?=$row['id']?><p></th>
-          <td><img src="img/small_movie/<?=$row['big_img']?>" width="70" height="100"  alt="<?=$row['ch_name']?>"></td>
-          <td><input type="text" name="ch_name[<?=$row['id']?>]" id="" value="<?=$row['ch_name']?>"></td>
-          <td><input type="text" name="en_name[<?=$row['id']?>]" id="" value="<?=$row['en_name']?>"></td>
-          <td><input type="text" name="big_img[<?=$row['id']?>]" id="" value="<?=$row['big_img']?>"></td>
-          <td><input type="text" name="small_img[<?=$row['id']?>]" id="" value="<?=$row['small_img']?>"></td>
-          <td><input type="text" name="time_length[<?=$row['id']?>]" id="" value="<?=$row['time_length']?>"></td>
-          <td><input type="checkbox" name="display" id="" value="<?=$row['id']?>" style="zoom:220%;" class="ml-4 mt-2" ></td>
-          <td><input type="checkbox" name='del[]' value="<?=$row['id']?>" style="zoom:220%;" class="ml-4 mt-2"></td>
+          <th class="text-center bg-dbule" scope="row">
+            <p name="<?=$row['id']?>"><?=$row['id']?><p>
+
+          </th>
+          <td class="text-center">
+            <img src="img/small_movie/<?=$row['big_img']?>" width="30" height=auto  alt="<?=$row['ch_name']?>"></td>
+          <td class="text-center" width=""><input type="text" name="ch_name[<?=$row['id']?>]" id="" value="<?=$row['ch_name']?>"size="18">
+          </td>
+          <td class="text-center">
+            <input type="text" name="en_name[<?=$row['id']?>]" id="" value="<?=$row['en_name']?>" size="26">
+          </td>
+          <td class="text-center">
+            <input type="text" name="big_img[<?=$row['id']?>]" id="" value="<?=$row['big_img']?>" size="6">
+          </td>
+          <td class="text-center">
+            <input type="text" name="small_img[<?=$row['id']?>]" id="" value="<?=$row['small_img']?>" size="4">
+          </td>
+          <td class="text-center">
+            <input type="text" name="introduction[<?=$row['id']?>]" id="" value="<?=$row['introduction']?>" size="70">
+          </td>
+          <td class="text-center">
+            <input type="text" name="type[<?=$row['id']?>]" id="" value="<?=$row['type']?>" size="1">
+          </td>
+          <td class="text-center">
+            <input type="text" name="lan[<?=$row['id']?>]" id="" value="<?=$row['lan']?>" size="1">
+          </td>
+          <td class="text-center">
+            <input type="text" name="video[<?=$row['id']?>]" id="" value="<?=$row['video']?>" size="12">
+          </td>
+          <td class="text-center">
+            <input type="text" name="time[<?=$row['id']?>]" id="" value="<?=$row['time']?>" size="10">
+          </td>
+          <td class="text-center">
+            <input type="text" name="time_length[<?=$row['id']?>]" id="" value="<?=$row['time_length']?>" size="6">
+          </td>
+          <td class="text-center">
+            <input type="checkbox" name="display" id="" value="<?=$row['id']?>" style="zoom:220%;" class="ml-4 mt-2"  size="1">
+          </td>
+          <td class="text-center">
+            <input type="checkbox" name='del[]' value="<?=$row['id']?>" style="zoom:220%;" class="ml-4 mt-2" size="1">
+          </td>
           
         </tr>
         <?php

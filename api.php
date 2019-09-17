@@ -134,7 +134,7 @@ switch ($_GET['do']) {
 
         <div class="backside">
           <div class="card" >
-            <div class="bg-dark" style="z-index:1; opacity:0.5;">
+            <div class="bg-dark" style="z-index:1; opacity:0.9;">
               <a class="bg-dark" href="api.php?do=introduction&id=<?=$row['id']?>">
               <img class="card-img-top img- fluid " src="img/small_movie/<?=$row['big_img']?>" width="280" height="475">
             </a>

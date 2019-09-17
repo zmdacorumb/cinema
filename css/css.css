@@ -14,6 +14,12 @@ body{
 .bg-bblock{
   background-image: linear-gradient(to bottom, #434343, #333333, #242424, #161616, #000000);
 }
+.bg-dbule{
+  background: #004080;
+}
+.bg-lblue{
+  background: #0097B0;
+}
 /* 消除input 點選後的框線色  和 input 的底色 */
 .a:focus {
   background: transparent;
@@ -23,7 +29,7 @@ body{
 .img{
   width: 100vw;
   height: 100vh;
-  background: url(../img/cap-america4.jpg) no-repeat fixed top left/cover;
+  background: url(../img/cap-america5.jpg) no-repeat fixed top left/cover;
   -webkit-background-size:cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -32,7 +38,7 @@ body{
 
 .price_img{
   width: 100vw;
-  height: 100vh;
+  height: auto;
   background:url('../img/ticket_bg.jpg') no-repeat fixed top left/cover;
   backdrop-filter: opacity(0.2); 
   -webkit-background-size:cover;
@@ -171,7 +177,6 @@ header {
 
 
   .movie_in{
-    /* backdrop-filter: blur(5px);   */
     backdrop-filter: opacity(0.1); 
 
 }
@@ -183,7 +188,6 @@ header {
   color: #E89805 !important;
 }
 hr{
-  /* background-image: linear-gradient(to right, #ffc108, #9dbc31, #45aa5f, #008f7b, #00717b, #00717b, #00717b, #00717b, #008f7b, #45aa5f, #9dbc31, #ffc108); */
   background-color: #f6d163;
   height: 1px;
   width: 100%; 
@@ -210,7 +214,6 @@ hr{
   width: 0px !important;
   pointer-events: auto;
   background-color: #e89805;
-  /* background-clip: padding-box; */
   border: 10px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
   outline: 0;
@@ -254,7 +257,6 @@ hr{
     height: 30px;
     border: 1px solid red;
     border-radius: 5px;
-    /* line-height: 30px; */
     color: red;
     text-align:center;
   }
@@ -306,12 +308,7 @@ hr{
 
 
 /* small card flip效果 */
-.middle1{
-  /* position: absolute; */
-  /* top: 50%; */
-  /* left: 50%;  */
-  /* transform: translate(-50%,-50%); */
-}
+
 .card1{
   cursor: pointer;
   width: 100%;
@@ -326,9 +323,6 @@ hr{
   /* position: absolute; */
   transition: transform .6s linear;
 }
-/* .front img{
-  height: 100%;
-} */
 .front1{
   transform: perspective(600px) rotateY(0deg);
 }
@@ -362,3 +356,87 @@ hr{
     height: 70% !important;
   }
 }
+
+/* index 電影翻轉效果 start */
+.image-flip:hover .backside,
+.image-flip.hover .backside {
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+
+.image-flip:hover .frontside,
+.image-flip.hover .frontside {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.image-flip {
+  margin-bottom: 200px;
+  width: 300px;
+  height: 477px;
+}
+
+.mainflip {
+  -webkit-transition: 1s;
+  -webkit-transform-style: preserve-3d;
+  -ms-transition: 1s;
+  -moz-transition: 1s;
+  -moz-transform: perspective(1000px);
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transition: 1s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.frontside,
+.backside {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: 1s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transition: 1s;
+  -moz-transform-style: preserve-3d;
+  -o-transition: 1s;
+  -o-transform-style: preserve-3d;
+  -ms-transition: 1s;
+  -ms-transform-style: preserve-3d;
+  transition: 0.5s;
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.frontside {
+  -webkit-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.backside {
+  /* background: #ff8a05; */
+  -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  -o-transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+  /* margin-bottom: 200px; */
+  /* width: 255px;
+  height: 477px; */
+  width: 100%;
+  height: auto;
+}
+
+.card,
+.card-img-top {
+  border-radius: 0;
+}
+/* end */
