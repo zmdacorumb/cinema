@@ -25,7 +25,7 @@ switch ($_GET['do']) {
   case 'logout':
     unset($_SESSION['admin']);
     unset($_SESSION['sir_admin']);
-    header('location:login.php');
+    header('location:index.html');
   break;
   // small slider 後台新增功能
   case 'smallInsert':

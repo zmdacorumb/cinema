@@ -50,7 +50,7 @@
             <input type="text" name="small_img[<?=$row['id']?>]" id="" value="<?=$row['small_img']?>" size="4">
           </td>
           <td class="text-center">
-            <input type="text" name="introduction[<?=$row['id']?>]" id="" value="<?=$row['introduction']?>" size="70">
+            <input type="text" name="introduction[<?=$row['id']?>]" id="" value="<?=$row['introduction']?>" size="30">
           </td>
           <td class="text-center">
             <input type="text" name="type[<?=$row['id']?>]" id="" value="<?=$row['type']?>" size="1">

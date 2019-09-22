@@ -36,6 +36,15 @@ else {
  <html lang="en">
 
  <head>
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YY177GGBHH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-YY177GGBHH');
+  </script>
    <!-- Required meta tags -->
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -62,6 +71,7 @@ else {
      <section class=" collapse navbar-collapse" id="navbar" style="margin:0 ;">
        <div class="container-fluid ">
          <form class="row" action="api.php?do=no_sir_booking_check" method="POST">
+         <!-- <form class="row" action="sir_bookingok.php" method="POST"> -->
            <div class="form-row col-lg-10 align-items-center justify-content-center m-0 ">
              <div class="col-md-3">
                <select name="chmovie" id="chmovie" class="form-control " onchange="getval()">

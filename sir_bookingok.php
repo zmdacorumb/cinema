@@ -13,11 +13,21 @@ if ($rows['time'] == 4) $time = "16:00~18:00";
 if ($rows['time'] == 5) $time = "18:00~20:00";
 if ($rows['time'] == 6) $time = "20:00~22:00";
 if ($rows['time'] == 7) $time = "22:00~24:00";
+// print_r($_POST);
 ?>
 <!doctype html>
 <html lang="en">
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YY177GGBHH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-YY177GGBHH');
+  </script>
   <link rel="stylesheet" href="css/bootstrap.css">
   <!-- Required meta tags -->
   <meta charset="utf-8">

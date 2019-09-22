@@ -41,11 +41,11 @@ include_once('sql.php');
         </div>
         <div class="d-flex border rounded-pill align-items-center py-2 mx-3 ">
           <i class="far fa-user fa-2x mx-3"></i>
-          <input type="text" class="form-control col-lg-9 a text-white" id="text" name="acc" placeholder="輸入帳號">
+          <input type="text" class="form-control col-lg-9 a text-white" id="text" name="acc"  value="admin">
         </div>
         <div class="d-flex border rounded-pill align-items-center mt-5 py-2 mx-3 ">
           <i class="fas fa-key fa-2x mx-3"></i>
-          <input type="password" class="form-control col-lg-9 a text-white" id="password" name="pwd" placeholder="輸入密碼">
+          <input type="password" class="form-control col-lg-9 a text-white" id="password" name="pwd" value="1234">
         </div>
         <div style="opacity:0;">
           <p class="ml-4 my-5 d-lg-inline tip " >輸入的帳號或密碼錯誤</p>

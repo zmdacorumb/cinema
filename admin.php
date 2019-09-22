@@ -7,6 +7,15 @@ $mainzone=(empty($_GET['do']))?'small_movie':$_GET['do'];
 <html lang="en">
 
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YY177GGBHH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-YY177GGBHH');
+  </script>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,9 +33,9 @@ $mainzone=(empty($_GET['do']))?'small_movie':$_GET['do'];
         <nav class="nav flex-column nav-pills ">
           <a class="navbar-brand font-weight-bold text-white  m-0" href="#">後台管理</a>
           <hr class="w-100 bg-white">
-          <button class="navbar-toggler btn-outline-secondary" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <!-- <button class="navbar-toggler btn-outline-secondary" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
-          </button>
+          </button> -->
           <div class="nav-link" id="navbarNav">
             <ul class="navbar-nav font-weight-bold">
               <li class="nav-item my-2">
